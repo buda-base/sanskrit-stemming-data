@@ -22,7 +22,7 @@ def remove_SLP1_modifiers(string):
     # removes #NUM  from the string
     mod_str = re.sub(r'\#([0-9]{1}|[0-9]{2})', r'', mod_str)
     # remove other modifiers
-    mod_str = mod_str.replace('_', '').replace('+', '')
+    mod_str = mod_str.replace('_', '').replace('+', '').replace('/', '')
     
     return mod_str
 
@@ -56,11 +56,11 @@ for file in os.listdir(in_path):
             if stem != form and stem in form:
                 if form.startswith(stem):
                     suffix = form.replace(stem, '')
-                    operation = '>'+str(len(suffix))
+                    operation = '\\>'+str(len(suffix))
                     suffixed += 1
                 elif form.endswith(stem):
                     prefix = form.replace(stem, '')
-                    operation = '<'+str(len(prefix))
+                    operation = '\\<'+str(len(prefix))
                     prefixed += 1
                 else:
                     parts = form.split(stem)
@@ -68,14 +68,14 @@ for file in os.listdir(in_path):
                         pre, suf = form.split(stem)
                     else:
                         amb_stems.append(line)
-                    operation = '<'+str(len(pre))+'>'+str(len(suf))
+                    operation = '\\<'+str(len(pre))+'>'+str(len(suf))
                     infixed += 1
             elif stem == form:
-                operation = '='
+                operation = '\\='
             else:
-                operation = '}'+stem
+                operation = '\\'+stem
         elif form:
-            operation = '{'
+            operation = '\\='
             indeclined += 1
         
         if form:
@@ -91,7 +91,7 @@ for key, value in output.items():
     output[key] = list(set(value))
 
 # write Heritage forms
-output_list = ['{} {}'.format(key, ';'.join(value)) for key, value in output.items()]
+output_list = ['{} {}'.format(key, ''.join(value)) for key, value in output.items()]
 write_file('output/heritage_forms_total.txt', '\n'.join(sorted(output_list)))
 
 # write ambiguous stems (to be checked in the dictionary)
@@ -101,7 +101,7 @@ write_file('output/heritage_ambiguous_stems.txt', '\n'.join(amb_stems))
 amb_forms_count = 0
 amb_forms = []
 for o in output_list:
-    if ';' in o:
+    if o.count('\\') >= 2:
         amb_forms_count += 1
         amb_forms.append(o)
 write_file('output/heritage_ambiguous_forms.txt', '\n'.join(amb_forms))
