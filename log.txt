@@ -1,0 +1,8 @@
+Prefixed: 109
+Prefixed+Suffixed: 20936
+Suffixed: 274959
+Indeclined: 111
+Total lines: 996554
+Total Unique forms: 776673
+Total ambiguous stems: 43
+Total ambiguous forms: 24467
