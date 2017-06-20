@@ -18,8 +18,13 @@ def open_file(file_path):
             return f.read()
 
 def remove_SLP1_modifiers(string):
-    # removes #1 and #2 from the string
-    return string.replace('#1', '').replace('#2', '')
+    mod_str = string
+    # removes #NUM  from the string
+    mod_str = re.sub(r'\#([0-9]{1}|[0-9]{2})', r'', mod_str)
+    # remove other modifiers
+    mod_str = mod_str.replace('_', '').replace('+', '')
+    
+    return mod_str
 
 
 in_path = './Heritage_XML'
