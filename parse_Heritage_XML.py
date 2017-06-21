@@ -26,8 +26,16 @@ def remove_SLP1_modifiers(string):
     
     return mod_str
 
+def parse_corrected_amb_stems():
+    raw_lines = open_file('./input/heritage_ambiguous_stems_corrected.csv').strip().split('\n')[1:]
+    parsed = {}
+    for line in raw_lines:
+        parts = line.split(',')
+        if parts[2] != '' and parts[3] != '':
+            parsed[(parts[0], parts[1])] = (parts[2], parts[3])
+    return parsed
 
-in_path = './Heritage_XML'
+in_path = './input/Heritage_XML'
 prefixed = 0
 suffixed = 0
 infixed = 0
@@ -35,7 +43,8 @@ indeclined = 0
 total = 0
 forms = []
 output = defaultdict(list)
-amb_stems = []
+amb_stems = ['Stem,Form,Start idx,End idx,XML line']
+corrected_ambs = parse_corrected_amb_stems()
 for file in os.listdir(in_path):
     raw_xml = open_file('{}/{}'.format(in_path, file)).split('\n')
     for line in raw_xml:
@@ -66,10 +75,16 @@ for file in os.listdir(in_path):
                     parts = form.split(stem)
                     if len(parts) == 2:
                         pre, suf = form.split(stem)
+                        operation = '\\<'+str(len(pre))+'>'+str(len(suf))
+                        infixed += 1
+                    elif (stem, form) in corrected_ambs.keys():
+                        start, end = corrected_ambs[(stem, form)]
+                        pre = form[:int(start)-1]
+                        suf = form[int(end):]
+                        operation = '\\<'+str(len(pre))+'>'+str(len(suf))
+                        infixed += 1
                     else:
-                        amb_stems.append(line)
-                    operation = '\\<'+str(len(pre))+'>'+str(len(suf))
-                    infixed += 1
+                        amb_stems.append('{},{},,,{}'.format(stem, form, line))
             elif stem == form:
                 operation = '\\='
             else:
@@ -82,20 +97,21 @@ for file in os.listdir(in_path):
             forms.append(form)
         
         operation = remove_SLP1_modifiers(operation)
+        
         if form:
             output[form].append(operation)
 
 
 # delete duplicates in the operations
 for key, value in output.items():
-    output[key] = list(set(value))
+    output[key] = sorted(list(set(value)))
 
 # write Heritage forms
 output_list = ['{} {}'.format(key, ''.join(value)) for key, value in output.items()]
 write_file('output/heritage_forms_total.txt', '\n'.join(sorted(output_list)))
 
 # write ambiguous stems (to be checked in the dictionary)
-write_file('output/heritage_ambiguous_stems.txt', '\n'.join(amb_stems))
+write_file('output/heritage_ambiguous_stems.csv', '\n'.join(amb_stems))
 
 # list ambiguous forms
 amb_forms_count = 0
