@@ -13,7 +13,7 @@ Each line is formatted as follows: `inflected<space>operation`
   - `\<NUM`: remove NUM characters at the beginning of the inflected form
   - `\<NUMa>NUMb`: remove NUMa characters at the beginning and NUMb characters at the end of the inflected form
 
-##### Test-set
+##### Test-set 
 
 ###### minimal
  - `test_sentence.txt`: 
