@@ -119,5 +119,5 @@ visarga_sandhi1_name = 'visarga_sandhi_1 = {'
 
 visarga_sandhi2_msg = '# {final: [(initial, new_second_final+new_final), ...], ...}\n# "new_second_final+new_final" replace the last two caracters of the previous word while the initial is unchanged'
 visarga_sandhi2_name = 'visarga_sandhi_2 = {'
-generate_sandhis(visarga_sandhi_2_initials, visarga_sandhi_2, visarga_sandhi2_name, visarga_sandhi2_msg)
+# generate_sandhis(visarga_sandhi_2_initials, visarga_sandhi_2, visarga_sandhi2_name, visarga_sandhi2_msg)
 
