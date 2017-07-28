@@ -1,5 +1,5 @@
 # this file is the output of generate_rules_from_tables.py
-# the tables are "unpacked" and transcoded to SLP1 in input/UBC_sandhi_charts.ods
+# the tables are "unpacked" and transcoded to SLP1 in input/sandhi-charts/*.csv
 
 # {final: [(initial, sandhied), ...], ...}
 # for i I u U, the application of these rules only when the form is not a dual has no incidence in the need to generate all sandhied forms here
