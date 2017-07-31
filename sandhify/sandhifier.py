@@ -140,7 +140,10 @@ def find_uninflected_stem(stem, form):
         i += 1
     stem_ending = stem[i:]
     form_ending = form[i:]
-    operation = '-{}+{}'.format(len(form_ending), stem_ending)
+    if stem_ending == '' and form_ending == '':
+        operation = ''
+    else:
+        operation = '-{}+{}'.format(len(form_ending), stem_ending)
     return operation
 
 
