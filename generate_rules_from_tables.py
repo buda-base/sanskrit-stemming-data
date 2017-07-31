@@ -32,7 +32,7 @@ def generate_consonant_sandhi_1(initials, sandhi_rules, name, comment):
                 parts = rule[1].split('(')
                 new_final = parts[0] 
                 new_initial = parts[1][:-1]
-                formatted_rules.append('\t\t\t("{}", ("{}", "{}"), "")'.format(rule[0], new_final, new_initial))
+                formatted_rules.append('\t\t\t("{}", ("{}", "{}"))'.format(rule[0], new_final, new_initial))
             else:
                 new_final = sandhi
                 new_initial = rule[0]
@@ -107,7 +107,7 @@ vowel_sandhi_name = 'vowel_sandhi = {'
 
 cons_sandhi1_msg = '# {final: [(initial, (new_final, new_initial)), ...], ...}'
 cons_sandhi1_name = 'consonant_sandhi_1 = {'
-# generate_consonant_sandhi_1(consonant_sandhi_1_initials, consonant_sandhi_1, cons_sandhi1_name, cons_sandhi1_msg)
+generate_consonant_sandhi_1(consonant_sandhi_1_initials, consonant_sandhi_1, cons_sandhi1_name, cons_sandhi1_msg)
 
 cons_sandhi2_msg = '# {final: [(initial, newFinal), ...], ...}\n# the initial consonant is unchanged'
 cons_sandhi2_name = 'consonant_sandhi_2 = {'
