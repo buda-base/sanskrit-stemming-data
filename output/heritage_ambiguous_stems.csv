@@ -1,6 +1,4 @@
 Stem,Form,Start idx,End idx,XML line
-pA,apApAyata,,,<f form="apApAyata"><v><cj><int/></cj><sys><prs><md><im/></md><atma/></prs></sys><np><sg/><trd/></np></v><s stem="pA#2"/></f>
-pA,apApAyaTAs,,,<f form="apApAyaTAs"><v><cj><int/></cj><sys><prs><md><im/></md><atma/></prs></sys><np><sg/><snd/></np></v><s stem="pA#2"/></f>
 pA,apApAyaDvam,,,<f form="apApAyaDvam"><v><cj><int/></cj><sys><prs><md><im/></md><atma/></prs></sys><np><pl/><snd/></np></v><s stem="pA#2"/></f>
 pA,apApAyanta,,,<f form="apApAyanta"><v><cj><int/></cj><sys><prs><md><im/></md><atma/></prs></sys><np><pl/><trd/></np></v><s stem="pA#2"/></f>
 pA,apApAyAmahi,,,<f form="apApAyAmahi"><v><cj><int/></cj><sys><prs><md><im/></md><atma/></prs></sys><np><pl/><fst/></np></v><s stem="pA#2"/></f>

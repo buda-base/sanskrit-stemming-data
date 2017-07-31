@@ -30,6 +30,12 @@ def apply_vowel_sandhi(sandhied, stem, final, vowel_sandhi):
         diff = ''
         if final == new_final:
             diff = '/'
+        elif ' ' in new_final:
+            new_final, new_initial = new_final.split(' ')
+            if new_initial == initial:
+                diff = '-{}+{}/'.format(new_final, final)
+            else:
+                diff = '-{}+{}/-{}+{}'.format(new_final, final, new_initial, initial)
         else:
             diff = '-{}+{}/'.format(new_final, final)
             
@@ -124,17 +130,40 @@ def apply_all_sandhis(inflected_form):
     return formatted
     
 
+def find_uninflected_stem(stem, form):
+    if len(stem) <= len(form):
+        max = len(stem)
+    else:
+        max = len(form)
+    i = 0
+    while i <= len(stem)-1 and i <= len(form)-1 and stem[i] == form[i]:
+        i += 1
+    stem_ending = stem[i:]
+    form_ending = form[i:]
+    operation = '-{}+{}'.format(len(form_ending), stem_ending)
+    return operation
+
+
 if __name__ == "__main__":    
     # opening the inflected forms
-    with open('output/heritage_forms_total.txt') as f:
+    with open('../output/heritage_raw_pairs.txt') as f:
         list = f.readlines()
-        inflected = [a.split() for a in list]    
+        inflected = [a.strip().split(',') for a in list]
 
     total_sandhied = []
-    for infl in inflected:
+    for infl, non_infl in inflected:
         sandhied = apply_all_sandhis(infl)
-        total_sandhied.extend(sandhied)
+        stems = non_infl.split('/')
+        for entry in sandhied:
+            parts = entry.split(',')
+            sandhied_form = parts[0]
+            initial = parts[1]
+            new_initials = parts[2].split('/')[1]
+            operations = []
+            for stem in stems:
+                operations.append(find_uninflected_stem(stem, sandhied_form))
+            total_sandhied.append(','.join([sandhied_form, initial, ';'.join(operations)+'/'+new_initials]))
     
-    with open('output/total_output.txt', 'w', -1, 'utf-8-sig') as g:
+    with open('../output/total_output.txt', 'w', -1, 'utf-8-sig') as g:
         output = '\n'.join(total_sandhied)
         g.write(output)

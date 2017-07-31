@@ -27,7 +27,7 @@ def remove_SLP1_modifiers(string):
     return mod_str
 
 def parse_corrected_amb_stems():
-    raw_lines = open_file('./input/heritage_ambiguous_stems_corrected.csv').strip().split('\n')[1:]
+    raw_lines = open_file('../input/heritage_ambiguous_stems_corrected.csv').strip().split('\n')[1:]
     parsed = {}
     for line in raw_lines:
         parts = line.split(',')
@@ -35,7 +35,9 @@ def parse_corrected_amb_stems():
             parsed[(parts[0], parts[1])] = (parts[2], parts[3])
     return parsed
 
-in_path = './input/Heritage_XML'
+unprocessed_pairs = []
+
+in_path = '../input/Heritage_XML'
 prefixed = 0
 suffixed = 0
 infixed = 0
@@ -59,6 +61,9 @@ for file in os.listdir(in_path):
         if len(stem) == 1:
             stem = stem[0]
             stem = remove_SLP1_modifiers(stem)        
+
+        if form != [] and stem != []:
+            unprocessed_pairs.append((form, stem))
 
         operation = '' 
         if stem:
@@ -108,10 +113,13 @@ for key, value in output.items():
 
 # write Heritage forms
 output_list = ['{} {}'.format(key, ''.join(value)) for key, value in output.items()]
-write_file('output/heritage_forms_total.txt', '\n'.join(sorted(output_list)))
+write_file('../output/heritage_forms_total.txt', '\n'.join(sorted(output_list)))
 
 # write ambiguous stems (to be checked in the dictionary)
-write_file('output/heritage_ambiguous_stems.csv', '\n'.join(amb_stems))
+write_file('../output/heritage_ambiguous_stems.csv', '\n'.join(amb_stems))
+
+# raw pairs
+write_file('../output/heritage_raw_pairs.txt', '\n'.join([a[0]+','+a[1] for a in unprocessed_pairs]))
 
 # list ambiguous forms
 amb_forms_count = 0
@@ -120,7 +128,7 @@ for o in output_list:
     if o.count('\\') >= 2:
         amb_forms_count += 1
         amb_forms.append(o)
-write_file('output/heritage_ambiguous_forms.txt', '\n'.join(amb_forms))
+write_file('../output/heritage_ambiguous_forms.txt', '\n'.join(amb_forms))
 
 log = ''
 log += 'Prefixed: ' + str(prefixed) + '\n'
