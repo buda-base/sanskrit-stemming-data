@@ -128,7 +128,7 @@ if __name__ == "__main__":
     # opening the inflected forms
     with open('output/heritage_forms_total.txt') as f:
         list = f.readlines()
-        inflected = [a.split()[0] for a in list]    
+        inflected = [a.split() for a in list]    
 
     total_sandhied = []
     for infl in inflected:
