@@ -103,7 +103,7 @@ visarga_sandhi_2 = [("aH", ["aH", "aH", "o", "ar", "o", "ar", "aS", "aS", "o", "
 
 vowel_sandhi_msg = '# {final: [(initial, sandhied), ...], ...}\n# for i I u U, the application of these rules only when the form is not a dual has no incidence in the need to generate all sandhied forms here'
 vowel_sandhi_name = 'vowel_sandhi = {'
-# generate_sandhis(vowel_sandhi_initials, vowel_sandhi, vowel_sandhi_name, vowel_sandhi_msg)
+generate_sandhis(vowel_sandhi_initials, vowel_sandhi, vowel_sandhi_name, vowel_sandhi_msg)
 
 cons_sandhi1_msg = '# {final: [(initial, (new_final, new_initial)), ...], ...}'
 cons_sandhi1_name = 'consonant_sandhi_1 = {'
@@ -111,12 +111,12 @@ generate_consonant_sandhi_1(consonant_sandhi_1_initials, consonant_sandhi_1, con
 
 cons_sandhi2_msg = '# {final: [(initial, newFinal), ...], ...}\n# the initial consonant is unchanged'
 cons_sandhi2_name = 'consonant_sandhi_2 = {'
-# generate_sandhis(consonant_sandhi_2_initials, consonant_sandhi_2, cons_sandhi2_name, cons_sandhi2_msg)
+generate_sandhis(consonant_sandhi_2_initials, consonant_sandhi_2, cons_sandhi2_name, cons_sandhi2_msg)
 
 visarga_sandhi1_msg = '# {final: [(initial, new_second_final+new_final), ...], ...}\n# "new_second_final+new_final" replace the last two caracters of the previous word while the initial is unchanged'
 visarga_sandhi1_name = 'visarga_sandhi_1 = {'
-# generate_sandhis(visarga_sandhi_1_initials, visarga_sandhi_1, visarga_sandhi1_name, visarga_sandhi1_msg)
+generate_sandhis(visarga_sandhi_1_initials, visarga_sandhi_1, visarga_sandhi1_name, visarga_sandhi1_msg)
 
 visarga_sandhi2_msg = '# {final: [(initial, new_second_final+new_final), ...], ...}\n# "new_second_final+new_final" replace the last two caracters of the previous word while the initial is unchanged'
 visarga_sandhi2_name = 'visarga_sandhi_2 = {'
-# generate_sandhis(visarga_sandhi_2_initials, visarga_sandhi_2, visarga_sandhi2_name, visarga_sandhi2_msg)
+generate_sandhis(visarga_sandhi_2_initials, visarga_sandhi_2, visarga_sandhi2_name, visarga_sandhi2_msg)

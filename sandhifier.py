@@ -1,29 +1,39 @@
 from sandhi_rules import *
-
+from collections import OrderedDict
 
 def apply_vowel_sandhi(stem, final, vowel_sandhi):
-    applied = []
+    applied = OrderedDict()
     for rule in vowel_sandhi[final]:
         # {final: [(initial, sandhied), ...], ...}
         initial = rule[0]
-        sandhi = rule[1]
+        new_final = rule[1]
         
         # calculating the diff for vowel sandhi
         diff = ''
-        if final == sandhi:
-            diff = '=/='
+        if final == new_final:
+            diff = '/'
         else:
-            diff = '-{}+{}/='.format(final, sandhi)
+            diff = '-{}+{}/'.format(new_final, final)
             
-        # formatting the entry
-        form = '{}{},{},{}'.format(stem, sandhi, initial, diff)
-        if form not in sandhied: # avoiding duplicates since the tables contain many of them
-            applied.append(form)
-    return applied
+        # adding the entries
+        if stem+new_final+'%'+diff not in applied.keys():
+            applied[stem+new_final+'%'+diff] = [initial]
+        elif initial not in applied[stem+new_final+'%'+diff]: # avoid duplicates as the tables contain many of them
+            applied[stem+new_final+'%'+diff].append(initial)
+        
+    # formatting the entries
+    formatted = []
+    for k, v in applied.items():
+        parts = k.split('%')
+        form = parts[0]
+        diff = parts[1]
+        initials = ':'.join(v)
+        formatted.append('{},{},{}'.format(form,initials,diff))
+    return formatted
 
 
 def apply_consonant_sandhi_1(stem, final, consonant_sandhi_1):
-    applied = []
+    applied = OrderedDict()
     for rule in consonant_sandhi_1[final]:
         # {final: [(initial, (new_final, new_initial)), ...], ...}
         initial = rule[0]
@@ -33,23 +43,33 @@ def apply_consonant_sandhi_1(stem, final, consonant_sandhi_1):
         # calculating diff for consonant sandhi
         diff = ''
         if final == new_final and initial == new_initial:
-            diff = '=/='
+            diff = '/'
         elif final == new_final and initial != new_initial:
-            diff = '=/-{}+{}'.format(initial, new_initial)
+            diff = '/-{}+{}'.format(new_initial, initial)
         elif final != new_final and initial == new_initial:
-            diff = '-{}+{}/='.format(final, new_final)
+            diff = '-{}+{}/'.format(new_final, final)
         else:
-            diff = '-{}+{}/-{}+{}'.format(final, new_final, initial, new_initial)
+            diff = '-{}+{}/-{}+{}'.format(new_final, final, new_initial, initial)
         
-        # formatting the entry
-        form = '{}{},{},{}'.format(stem, new_final, initial, diff)
-        if form not in sandhied: # same as above
-            applied.append(form)
-    return applied
+        # adding the entries
+        if stem+new_final+'%'+diff not in applied.keys():
+            applied[stem+new_final+'%'+diff] = [initial]
+        elif initial not in applied[stem+new_final+'%'+diff]: # avoid duplicates as the tables contain many of them
+            applied[stem+new_final+'%'+diff].append(initial)
+        
+    # formatting the entries
+    formatted = []
+    for k, v in applied.items():
+        parts = k.split('%')
+        form = parts[0]
+        diff = parts[1]
+        initials = ':'.join(v)
+        formatted.append('{},{},{}'.format(form,initials,diff))
+    return formatted
 
 
 def apply_consonant_sandhi_2(stem, final, consonant_sandhi_2):
-    applied = []
+    applied = OrderedDict()
     for rule in consonant_sandhi_2[final]:
         # {final: [(initial, new_second_final+new_final), ...], ...}
         initial = rule[0]
@@ -58,21 +78,63 @@ def apply_consonant_sandhi_2(stem, final, consonant_sandhi_2):
         # calculating diff for consonant sandhi 2
         diff = ''
         if final == new_final:
-            diff = '=/='
+            diff = '/'
         elif final != new_final:
-            diff = '-{}+{}/='.format(final, new_final)
+            diff = '-{}+{}/'.format(new_final, final)
+
+        # adding the entries
+        if stem+new_final+'%'+diff not in applied.keys():
+            applied[stem+new_final+'%'+diff] = [initial]
+        elif initial not in applied[stem+new_final+'%'+diff]: # avoid duplicates as the tables contain many of them
+            applied[stem+new_final+'%'+diff].append(initial)
         
-        # formatting the entry
-        form = '{}{},{},{}'.format(stem, new_final, initial, diff)
-        if form not in sandhied: # same as above
-            applied.append(form)
-    return applied
+    # formatting the entries
+    formatted = []
+    for k, v in applied.items():
+        parts = k.split('%')
+        form = parts[0]
+        diff = parts[1]
+        initials = ':'.join(v)
+        formatted.append('{},{},{}'.format(form,initials,diff))        
+    return formatted
 
 
-def apply_all_sandhis(infl):    
+def apply_visarga_sandhi(stem, final, visarga_sandhi):
+    applied = OrderedDict()
+    for rule in visarga_sandhi[final]:
+        # {final: [(initial, new_second_final+new_final), ...], ...}
+        initial = rule[0]
+        new_final = rule[1]
+        
+        # calculating diff for visarga sandhi 1
+        if final == new_final:
+            diff = '/'
+        elif final != new_final:
+            diff = '-{}+{}/'.format(new_final, final)
+        
+        # adding the entries
+        if stem+new_final+'%'+diff not in applied.keys():
+            applied[stem+new_final+'%'+diff] = [initial]
+        elif initial not in applied[stem+new_final+'%'+diff]: # avoid duplicates as the tables contain many of them
+            applied[stem+new_final+'%'+diff].append(initial)
+        
+    # formatting the entries
+    formatted = []
+    for k, v in applied.items():
+        parts = k.split('%')
+        form = parts[0]
+        diff = parts[1]
+        initials = ':'.join(v)
+        formatted.append('{},{},{}'.format(form,initials,diff))        
+    return formatted
+
+
+def apply_all_sandhis(inflected_form):    
+    sandhied = []
+    
     # split in stem and ending
-    final = infl[-1]
-    stem = infl[:-1]
+    final = inflected_form[-1]
+    stem = inflected_form[:-1]
 
     if final in vowel_sandhi:
         new_sandhied = apply_vowel_sandhi(stem, final, vowel_sandhi)
@@ -87,19 +149,30 @@ def apply_all_sandhis(infl):
         sandhied.extend(new_sandhied)
         
     # visarga sandhi applies to the last two characters
-    final = infl[-2:]
-    stem = infl[:-2]
+    final = inflected_form[-2:]
+    stem = inflected_form[:-2]
     
+    if final in visarga_sandhi_1:
+        new_sandhied = apply_visarga_sandhi(stem, final, visarga_sandhi_1)
+        sandhied.extend(new_sandhied)
     
+    if final in visarga_sandhi_2:
+        new_sandhied = apply_visarga_sandhi(stem, final, visarga_sandhi_2)
+        sandhied.extend(new_sandhied)
     return sandhied
     
 
-# opening the inflected forms
-with open('output/heritage_forms_total.txt') as f:
-    list = f.readlines()
-    inflected = [a.split()[0] for a in list]    
+if __name__ == "__main__":    
+    # opening the inflected forms
+    with open('output/heritage_forms_total.txt') as f:
+        list = f.readlines()
+        inflected = [a.split()[0] for a in list]    
 
-for infl in inflected[:10]:
-    sandhied = []
-    apply_all_sandhis(infl)
-    print('\n'.join(sandhied))
+    total_sandhied = []
+    for infl in inflected:
+        sandhied = apply_all_sandhis(infl)
+        total_sandhied.extend(sandhied)
+    
+    with open('output/total_output.txt', 'w', -1, 'utf-8-sig') as g:
+        output = '\n'.join(total_sandhied)
+        g.write(output)
