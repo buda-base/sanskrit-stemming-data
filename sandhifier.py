@@ -1,7 +1,7 @@
 from sandhi_rules import *
 
 
-def apply_vowel_sandhi(infl_stem, final, vowel_sandhi):
+def apply_vowel_sandhi(stem, final, vowel_sandhi):
     applied = []
     for rule in vowel_sandhi[final]:
         # {final: [(initial, sandhied), ...], ...}
@@ -16,13 +16,13 @@ def apply_vowel_sandhi(infl_stem, final, vowel_sandhi):
             diff = '-{}+{}/='.format(final, sandhi)
             
         # formatting the entry
-        form = '{}{},{},{}'.format(infl_stem, sandhi, initial, diff)
+        form = '{}{},{},{}'.format(stem, sandhi, initial, diff)
         if form not in sandhied: # avoiding duplicates since the tables contain many of them
             applied.append(form)
     return applied
 
 
-def apply_consonant_sandhi_1(infl_stem, final, consonant_sandhi_1):
+def apply_consonant_sandhi_1(stem, final, consonant_sandhi_1):
     applied = []
     for rule in consonant_sandhi_1[final]:
         # {final: [(initial, (new_final, new_initial)), ...], ...}
@@ -42,13 +42,13 @@ def apply_consonant_sandhi_1(infl_stem, final, consonant_sandhi_1):
             diff = '-{}+{}/-{}+{}'.format(final, new_final, initial, new_initial)
         
         # formatting the entry
-        form = '{}{},{},{}'.format(infl_stem, new_final, initial, diff)
+        form = '{}{},{},{}'.format(stem, new_final, initial, diff)
         if form not in sandhied: # same as above
             applied.append(form)
     return applied
 
 
-def apply_consonant_sandhi_2(infl_stem, final, consonant_sandhi_2):
+def apply_consonant_sandhi_2(stem, final, consonant_sandhi_2):
     applied = []
     for rule in consonant_sandhi_2[final]:
         # {final: [(initial, new_second_final+new_final), ...], ...}
@@ -63,7 +63,7 @@ def apply_consonant_sandhi_2(infl_stem, final, consonant_sandhi_2):
             diff = '-{}+{}/='.format(final, new_final)
         
         # formatting the entry
-        form = '{}{},{},{}'.format(infl_stem, new_final, initial, diff)
+        form = '{}{},{},{}'.format(stem, new_final, initial, diff)
         if form not in sandhied: # same as above
             applied.append(form)
     return applied
@@ -72,23 +72,23 @@ def apply_consonant_sandhi_2(infl_stem, final, consonant_sandhi_2):
 def apply_all_sandhis(infl):    
     # split in stem and ending
     final = infl[-1]
-    infl_stem = infl[:-1]
+    stem = infl[:-1]
 
     if final in vowel_sandhi:
-        new_sandhied = apply_vowel_sandhi(infl_stem, final, vowel_sandhi)
+        new_sandhied = apply_vowel_sandhi(stem, final, vowel_sandhi)
         sandhied.extend(new_sandhied)
     
     if final in consonant_sandhi_1:
-        new_sandhied = apply_consonant_sandhi_1(infl_stem, final, consonant_sandhi_1)
+        new_sandhied = apply_consonant_sandhi_1(stem, final, consonant_sandhi_1)
         sandhied.extend(new_sandhied)
     
     if final in consonant_sandhi_2:
-        new_sandhied = apply_consonant_sandhi_2(infl_stem, final, consonant_sandhi_2)
+        new_sandhied = apply_consonant_sandhi_2(stem, final, consonant_sandhi_2)
         sandhied.extend(new_sandhied)
         
     # visarga sandhi applies to the last two characters
     final = infl[-2:]
-    infl_stem = infl[:-2]
+    stem = infl[:-2]
     
     
     return sandhied
