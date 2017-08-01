@@ -55,7 +55,7 @@ def generate_consonant_sandhi_1(initials, sandhi_rules, name, comment):
                 parts = rule[1].split('(')
                 new_final = parts[0] 
                 new_initial = parts[1][:-1]
-                formatted_rules.append('\t\t\t("{}", ("{}", "{}"))'.format(rule[0], new_final, new_initial))
+                formatted_rules.append('\t\t\t("{}", ("{}", "{}"))'.format(rule[0], new_final, new_initial)) # the space in the diff is preserved
             else:
                 new_final = sandhi
                 new_initial = rule[0]

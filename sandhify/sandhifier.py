@@ -54,7 +54,7 @@ def apply_vowel_sandhi(sandhied, stem, final, vowel_sandhi):
             if new_initial == initial:
                 diff = '-{}+{}/'.format(new_final, final)
             else:
-                diff = '-{}+{}/-{}+{}'.format(new_final, final, new_initial, initial)
+                diff = '-{}+{}/- {}+{}'.format(new_final, final, new_initial, initial)
         else:
             diff = '-{}+{}/'.format(new_final, final)
             
