@@ -27,3 +27,13 @@
 
 ## 3 `sandhifier.py`
 
+##### Input
+ - `output/heritage_raw_pairs.txt` from `raw_parse_Heritage_XML.py`
+ - `sandhi_rules.py`
+
+##### Action
+ - generates all the sandhied forms for every inflected form in `heritage_raw_pairs.txt` (see the docstrings in the code for more details)
+ - generate the diff to get back to the lemma and the un-sandhied initial character of next word
+
+##### Output
+ - `total_output.txt` (see [here](../README.md) for a description)
