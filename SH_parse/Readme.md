@@ -26,8 +26,8 @@
  
 ##### Action
  - for every XML file:
-    - extracts all the form-stem pairs
-    - regroups all the lemmas belonging to the same inflected form, separating them with `/`
+   - extracts all the form-stem pairs
+   - regroups all the lemmas belonging to the same inflected form, separating them with `/`
  
 ##### Output
  - `output/heritage_raw_pairs.txt`
