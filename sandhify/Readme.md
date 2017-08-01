@@ -5,7 +5,7 @@
  
 ##### Action
  - The charts are transcoded in [SLP1](https://en.wikipedia.org/wiki/SLP1)
- - The tables are "unpacked" (for ex. [here](../input/sandhi-charts/UBC_sandhi_charts_vowels.csv))
+ - The tables are "unpacked" (for ex. [here](../input/sandhi-charts/UBC_sandhi_charts_consonants2.csv))
  - The exceptions and special rules are integrated in the unpacked tables
 
 ##### Output
@@ -18,7 +18,7 @@
  - `input/sandhi-charts/*.csv`
 
 ##### Action
- - Format them as in [this file](./generate_rules_from_tables.py#69)
+ - Format them as in [this file](./generate_rules_from_tables.py#L69)
  - Run `generate_rules_from_tables.py`
 
 ##### Output
@@ -36,4 +36,4 @@
  - generate the diff to get back to the lemma and the un-sandhied initial character of next word
 
 ##### Output
- - `total_output.txt` (see [here](../README.md) for a description)
+ - `total_output.txt` (see [here](../README.md#outputtotal_outputtxt) for a description)
