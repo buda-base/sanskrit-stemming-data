@@ -1,4 +1,11 @@
 def generate_sandhi_rules(initials, sandhi):
+    """
+    Unpacks the sandhi table into individual rules
+
+    :param initials: The first row containing the initial char of the next word
+    :param sandhi: The remaining rows, the first column contains the ending char of the current word
+    :return: [('a', [('a', 'A'), ('A', 'A'), ...]), ('A', [('a', 'A'), ('A', 'A'), ...]), ...]
+    """
     rules = []
     for final, sandhied_forms in sandhi:
         rule = (final, [])
@@ -7,8 +14,20 @@ def generate_sandhi_rules(initials, sandhi):
         rules.append(rule)
     return rules
 
+
 def generate_sandhis(initials, sandhi_rules, name, comment):
+    """
+    Formats and prints the output of generate_sandhi_rules() so it can simply be pasted in sandhi_rules.py,
+    which is then used by sandhifier.py
+
+    :param initials: for generate_sandhi_rules()
+    :param sandhi_rules:  for generate_sandhi_rules()
+    :param name: name of the variable (in sandhi_rules.py) for a given sandhi table
+    :param comment: put before the variable
+    """
     vowel = generate_sandhi_rules(initials, sandhi_rules)
+
+    print(vowel)
     print(comment)
     print(name)
     for final, rules in vowel:
@@ -19,7 +38,11 @@ def generate_sandhis(initials, sandhi_rules, name, comment):
         print(',\n'.join(formatted_rules)+'],')
     print('\t\t\t}')
 
+
 def generate_consonant_sandhi_1(initials, sandhi_rules, name, comment):
+    """
+    Does the same thing as generate_sandhis(), further unpacking sandhis like "c(C)"
+    """
     cons_sandhi1 = generate_sandhi_rules(initials, sandhi_rules)
     print(comment)
     print(name)
@@ -40,6 +63,8 @@ def generate_consonant_sandhi_1(initials, sandhi_rules, name, comment):
         groups.append('\t\t"{}": [\n'.format(final)+',\n'.join(formatted_rules)+'\n\t\t]')
     print(',\n'.join(groups))
     print('}')
+
+# These tables have been manually formatted from the .csv files of the same content.
 
 vowel_sandhi_initials = ["a", "A", "A", "i", "i", "u", "U", "f", "e", "E", "o", "O"]
 vowel_sandhi = [("a", ["A", "A", "A", "e", "e", "o", "o", "ar", "E", "E", "O", "O"]),
