@@ -25,6 +25,8 @@ Each line is formatted as follows:
  - `<diff_to_nth_lemma>: '-<number_of_chars_to_delete>+<chars_to_add>`
  - `<initial_diff>: '-<sandhied_initial>+<initial>`
 
+The space between the sandhied words is preserved except for the vowel sandhis where the final and initial vowels coalesce.
+
 ###### Example 1: `prezyate,a,-1+;-6+I/-'+a`,
 
  - inflected form: `prezyate`

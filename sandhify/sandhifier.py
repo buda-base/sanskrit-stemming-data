@@ -47,16 +47,16 @@ def apply_vowel_sandhi(sandhied, stem, final, vowel_sandhi):
         
         # calculating the diff for vowel sandhi
         diff = ''
-        if final == new_final:
-            diff = '/'
-        elif ' ' in new_final:
+        if ' ' in new_final:
             new_final, new_initial = new_final.split(' ')
             if new_initial == initial:
-                diff = '-{}+{}/'.format(new_final, final)
+                diff = '-{}+{}/- +'.format(new_final, final)
             else:
                 diff = '-{}+{}/- {}+{}'.format(new_final, final, new_initial, initial)
+        elif final == new_final:
+            diff = '/-+{}'.format(initial)
         else:
-            diff = '-{}+{}/'.format(new_final, final)
+            diff = '-{}+{}/-+{}'.format(new_final, final, initial)
             
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)        
@@ -81,11 +81,11 @@ def apply_consonant_sandhi_1(sandhied, stem, final, consonant_sandhi_1):
         if final == new_final and initial == new_initial:
             diff = '/'
         elif final == new_final and initial != new_initial:
-            diff = '/-{}+{}'.format(new_initial, initial)
+            diff = '/- {}+{}'.format(new_initial, initial)
         elif final != new_final and initial == new_initial:
-            diff = '-{}+{}/'.format(new_final, final)
+            diff = '-{}+{}/- +'.format(new_final, final)
         else:
-            diff = '-{}+{}/-{}+{}'.format(new_final, final, new_initial, initial)
+            diff = '-{}+{}/- {}+{}'.format(new_final, final, new_initial, initial)
         
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)
@@ -109,7 +109,7 @@ def apply_consonant_sandhi_2(sandhied, stem, final, consonant_sandhi_2):
         if final == new_final:
             diff = '/'
         elif final != new_final:
-            diff = '-{}+{}/'.format(new_final, final)
+            diff = '- {}+{}/'.format(new_final, final)
 
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)
