@@ -1,5 +1,6 @@
 from sandhi_rules import *
 from collections import OrderedDict
+import re
 
 
 def add_entries(ordered_dict, form_n_diff, initial):
@@ -125,7 +126,6 @@ def apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi):
     :param visarga_sandhi: from sandhi_rules.py {final: [(initial, new_second_final+new_final), ...], ...}
     """
     for rule in visarga_sandhi[final]:
-        #
         initial = rule[0]
         new_final = rule[1]
         
@@ -137,6 +137,35 @@ def apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi):
         
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)
+
+
+def apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandhi):
+    """
+    """
+    # find ending (can be a cluster of consonants or a single one)
+    consonants = ["k", "K", "g", "G", "N", "c", "C", "j", "J", "Y", "w", "W", "q", "Q", "R", "t", "T", "d", "D", "n", "p", "P", "b", "B", "m", "y", "r", "l", "v", "S", "z", "s", "h"]
+    if inflected_form[-1] in consonants:
+        stem, final = re.split('(['+''.join(consonants)+']+)$', inflected_form)[:2]
+        
+        # clusters of consonants are reduced to the first consonant
+        if len(final) > 1:
+            stem = stem + final[0]
+            final = final[1:]
+            diff = '-+{}/'.format(final)
+            add_entries(sandhied, stem+'%'+diff, '')
+        else:        
+            for rule in absolute_finals_sandhi[final]:
+                initial = rule[0] # empty string
+                new_final = rule[1]
+                
+                # calculating diff for absolute finals sandhi
+                if final == new_final:
+                    diff = '/'
+                elif final != new_final:
+                    diff = '-{}+{}/'.format(new_final, final)
+                
+                # adding the entries
+                add_entries(sandhied, stem+new_final+'%'+diff, '')
 
 
 def apply_all_sandhis(inflected_form):
@@ -171,6 +200,8 @@ def apply_all_sandhis(inflected_form):
     
     if final in visarga_sandhi_2:
         apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi_2)
+    
+    apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandhi)
     
     formatted = format_entries(sandhied)
     return formatted

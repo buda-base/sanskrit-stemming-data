@@ -25,12 +25,10 @@ def generate_sandhis(initials, sandhi_rules, name, comment):
     :param name: name of the variable (in sandhi_rules.py) for a given sandhi table
     :param comment: put before the variable
     """
-    vowel = generate_sandhi_rules(initials, sandhi_rules)
-
-    print(vowel)
+    all_rules = generate_sandhi_rules(initials, sandhi_rules)
     print(comment)
     print(name)
-    for final, rules in vowel:
+    for final, rules in all_rules:
         print('\t\t"{}": ['.format(final))
         formatted_rules = []
         for rule in rules:        
@@ -126,22 +124,76 @@ visarga_sandhi_2 = [("aH", ["aH", "aH", "o", "ar", "o", "ar", "aS", "aS", "o", "
                     ("OH", ["OH", "OH", "Or", "Or", "Or", "Or", "OS", "OS", "Or", "Or", "Or", "Or", "Oz", "Oz", "Or", "Or", "Or", "Or", "Os", "Os", "Or", "Or", "Or", "Or", "OH", "OH", "Or", "Or", "Or", "Or", "Or", "Or", "Or", "Or"])
                     ]
 
+absolute_finals_sandhi_initials = ['']
+absolute_finals_sandhi = [("k", ["k"]),
+                          ("K", ["k"]),
+                          ("g", ["k"]),
+                          ("G", ["k"]),
+                          ("w", ["w"]),
+                          ("W", ["w"]),
+                          ("q", ["w"]),
+                          ("Q", ["w"]),
+                          ("t", ["t"]),
+                          ("T", ["t"]),
+                          ("d", ["t"]),
+                          ("D", ["t"]),
+                          ("p", ["p"]),
+                          ("P", ["p"]),
+                          ("b", ["p"]),
+                          ("B", ["p"]),
+                          ("c", ["k"]),
+                          ("C", ["k"]),
+                          ("j", ["w"]),
+                          ("J", ["w"]),
+                          ("S", ["k"]),
+                          ("N", ["N"]),
+                          ("Y", ["Y"]),
+                          ("R", ["R"]),
+                          ("n", ["n"]),
+                          ("m", ["m"]),
+                          ("s", ["H"]),
+                          ("r", ["H"])
+                          # deal with the consonant clusters in sandhifier
+                          ]
+
+cC_words_sandhi_initials = ["c", "C"]
+cC_words_sandhi = [("a", ["cC", "cC"]),
+                   ("A", ["c", "C"]),
+                   ("i", ["cC", "cC"]),
+                   ("I", ["c", "C"]),
+                   ("u", ["cC", "cC"]),
+                   ("U", ["c", "C"]),
+                   ("f", ["cC", "cC"]),
+                   ("e", ["cC", "cC"]),
+                   ("E", ["c", "C"]),
+                   ("o", ["cC", "cC"]),
+                   ("O", ["c", "C"])
+                   ]
+
 vowel_sandhi_msg = '# {final: [(initial, sandhied), ...], ...}\n# for i I u U, the application of these rules only when the form is not a dual has no incidence in the need to generate all sandhied forms here'
 vowel_sandhi_name = 'vowel_sandhi = {'
-generate_sandhis(vowel_sandhi_initials, vowel_sandhi, vowel_sandhi_name, vowel_sandhi_msg)
+# generate_sandhis(vowel_sandhi_initials, vowel_sandhi, vowel_sandhi_name, vowel_sandhi_msg)
 
 cons_sandhi1_msg = '# {final: [(initial, (new_final, new_initial)), ...], ...}'
 cons_sandhi1_name = 'consonant_sandhi_1 = {'
-generate_consonant_sandhi_1(consonant_sandhi_1_initials, consonant_sandhi_1, cons_sandhi1_name, cons_sandhi1_msg)
+# generate_consonant_sandhi_1(consonant_sandhi_1_initials, consonant_sandhi_1, cons_sandhi1_name, cons_sandhi1_msg)
 
 cons_sandhi2_msg = '# {final: [(initial, newFinal), ...], ...}\n# the initial consonant is unchanged'
 cons_sandhi2_name = 'consonant_sandhi_2 = {'
-generate_sandhis(consonant_sandhi_2_initials, consonant_sandhi_2, cons_sandhi2_name, cons_sandhi2_msg)
+# generate_sandhis(consonant_sandhi_2_initials, consonant_sandhi_2, cons_sandhi2_name, cons_sandhi2_msg)
 
 visarga_sandhi1_msg = '# {final: [(initial, new_second_final+new_final), ...], ...}\n# "new_second_final+new_final" replace the last two caracters of the previous word while the initial is unchanged'
 visarga_sandhi1_name = 'visarga_sandhi_1 = {'
-generate_sandhis(visarga_sandhi_1_initials, visarga_sandhi_1, visarga_sandhi1_name, visarga_sandhi1_msg)
+# generate_sandhis(visarga_sandhi_1_initials, visarga_sandhi_1, visarga_sandhi1_name, visarga_sandhi1_msg)
 
 visarga_sandhi2_msg = '# {final: [(initial, new_second_final+new_final), ...], ...}\n# "new_second_final+new_final" replace the last two caracters of the previous word while the initial is unchanged'
 visarga_sandhi2_name = 'visarga_sandhi_2 = {'
-generate_sandhis(visarga_sandhi_2_initials, visarga_sandhi_2, visarga_sandhi2_name, visarga_sandhi2_msg)
+# generate_sandhis(visarga_sandhi_2_initials, visarga_sandhi_2, visarga_sandhi2_name, visarga_sandhi2_msg)
+
+absolute_finals_sandhi_msg = '# {final: [(empty_string, new_final), ...], ...}'
+absolute_finals_sandhi_name = 'absolute_finals_sandhi = {'
+generate_sandhis(absolute_finals_sandhi_initials, absolute_finals_sandhi, absolute_finals_sandhi_name, absolute_finals_sandhi_msg)
+
+cC_words_sandhi_msg = '# {final: [(initial, newFinal), ...], ...}\n# the final consonant is unchanged'
+cC_words_sandhi_name = 'cC_words_sandhi = {'
+generate_sandhis(cC_words_sandhi_initials, cC_words_sandhi, cC_words_sandhi_name, cC_words_sandhi_msg)

@@ -2,12 +2,20 @@ from sandhifier import *
 
 def find_sandhi(first, second):
     all_sandhis = apply_all_sandhis(first)
-    initial = second[0]
     possible = []
-    for possible_sandhi in all_sandhis:
-        possible_initials = possible_sandhi.split(',')[1]
-        if initial in possible_initials:
-            possible.append(possible_sandhi)
+    if len(second) > 0:
+        initial = second[0]
+        for possible_sandhi in all_sandhis:
+            possible_initials = possible_sandhi.split(',')[1]
+            if initial in possible_initials:
+                possible.append(possible_sandhi)
+    else:
+        initial = second
+        for possible_sandhi in all_sandhis:
+            possible_initials = possible_sandhi.split(',')[1]
+            if initial == possible_initials:
+                possible.append(possible_sandhi)
+    
     if possible:
         return possible
     return None 
