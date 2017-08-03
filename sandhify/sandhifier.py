@@ -131,9 +131,15 @@ def apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi):
         
         # calculating diff for visarga sandhi 1
         if final == new_final:
-            diff = '/'
+            diff = '/- +'
+        elif ' ' in new_final:
+            new_final, new_initial = new_final.split(' ')
+            if new_initial == initial:
+                diff = '-{}+{}/- +'.format(new_final, final)
+            else:
+                diff = '-{}+{}/- {}+{}'.format(new_final, final, new_initial, initial)
         elif final != new_final:
-            diff = '-{}+{}/'.format(new_final, final)
+            diff = '-{}+{}/- +'.format(new_final, final)
         
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)
@@ -174,8 +180,44 @@ def apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandh
 
 
 def apply_cC_words_sandhi(sandhied, stem, final, cC_words_sandhi):
-    pass
+    """
+    Generates all the sandhis from the cC words table
 
+    :param sandhied: the OrderedDict receiving the generated forms
+    :param stem: the form without the declension
+    :param final: the declension (1 char) used to determine which rule to apply
+    :param cC_words_sandhi: from sandhi_rules.py {final: [(initial, new_initial), ...], ...}
+    """
+    for rule in cC_words_sandhi[final]:
+        initial = rule[0]
+        new_initial = rule[1]
+        
+        diff = '/- {}+{}'.format(new_initial, initial)
+        
+        # adding the entries
+        add_entries(sandhied, stem+final+'%'+diff, initial)
+
+
+def apply_punar_sandhi(sandhied, punar_sandhi):
+    """
+    Generates all sandhis for punar
+    
+    :param cC_words_sandhi: from sandhi_rules.py
+    """
+    stem = 'puna'
+    final = 'r'
+    for rule in punar_sandhi[final]:
+        initial = rule[0]
+        new_final = rule[1]
+        
+        # calculating diff for visarga sandhi 1
+        if final == new_final:
+            diff = '/- +'
+        elif final != new_final:
+            diff = '-{}+{}/- +'.format(new_final, final)
+        
+        # adding the entries
+        add_entries(sandhied, stem+new_final+'%'+diff, initial)
 
 def apply_all_sandhis(inflected_form):
     """
@@ -214,6 +256,10 @@ def apply_all_sandhis(inflected_form):
         apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi_2)
     
     apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandhi)
+    
+    # Exceptions
+    if inflected_form == 'punar':
+        apply_punar_sandhi(sandhied, punar_sandhi)
     
     formatted = format_entries(sandhied)
     return formatted

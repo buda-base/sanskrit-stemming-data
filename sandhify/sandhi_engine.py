@@ -22,20 +22,20 @@ def find_sandhi(first, second):
 
 
 def apply_sandhi(current_word, next_word):
-    applied = ''
+    applied = []
     possible_sandhi = find_sandhi(current_word, next_word)
     if possible_sandhi:
         for possible in possible_sandhi:
             sandhied = possible.split(',')[0]
             new_initial = possible.split('/')[1]
             if new_initial == '':
-               applied = sandhied+next_word
+               applied.append(sandhied+next_word)
             else:
                 sandhied_initial, initial = new_initial.lstrip('-').split('+')
                 sandhied_next_word = sandhied_initial+next_word.lstrip(initial)
-                applied = sandhied+sandhied_next_word
+                applied.append(sandhied+sandhied_next_word)
     else:
-        applied = '"N/A"'
+        applied.append('"N/A"')
     return applied
 
 if __name__ == "__main__":

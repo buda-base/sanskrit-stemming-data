@@ -99,7 +99,7 @@ consonant_sandhi_2 = [("k", ["k", "k", "g", "g", "k", "k", "g", "g", "k", "k", "
                       ]
 
 visarga_sandhi_1_initials = ["a", "A", "i", "i", "u", "U", "f", "e", "E", "o", "O", "y", "r", "l", "v", "S", "z", "s", "h"]
-visarga_sandhi_1 = [("aH", ["o'", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "o", "o", "o", "o", "aH", "aH", "aH", "o"]),
+visarga_sandhi_1 = [("aH", ["o '", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "o", "o", "o", "o", "aH", "aH", "aH", "o"]),
                     ("AH", ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "AH", "AH", "AH", "A"]),
                     ("iH", ["ir", "ir", "ir", "ir", "ir", "ir", "ir", "ir", "ir", "ir", "ir", "ir", "I", "ir", "ir", "H", "iH", "iH", "ir"]),
                     ("IH", ["Ir", "Ir", "Ir", "Ir", "Ir", "Ir", "Ir", "Ir", "Ir", "Ir", "Ir", "Ir", "I", "Ir", "Ir", "H", "IH", "IH", "Ir"]),
@@ -113,7 +113,7 @@ visarga_sandhi_1 = [("aH", ["o'", "a", "a", "a", "a", "a", "a", "a", "a", "a", "
 
 visarga_sandhi_2_initials = ["k", "K", "g", "g", "G", "G", "c", "C", "j", "j", "J", "J", "w", "W", "q", "q", "Q", "Q", "t", "T", "d", "d", "D", "D", "p", "P", "b", "b", "B", "B", "n", "n", "m", "m"]
 visarga_sandhi_2 = [("aH", ["aH", "aH", "o", "ar", "o", "ar", "aS", "aS", "o", "ar", "o", "ar", "az", "az", "o", "ar", "o", "ar", "as", "as", "o", "ar", "o", "ar", "aH", "aH", "o", "ar", "o", "ar", "o", "ar", "o", "ar"]),
-                    ("AH", ["AH", "AH", "A", "Ar", "A", "Ar", "AS", "AS", "A", "Ar", "A", "Ar", "AZ", "AZ", "A", "Ar", "A", "Ar", "As", "As", "A", "Ar", "A", "Ar", "AH", "AH", "A", "Ar", "A", "Ar", "A", "Ar", "A", "Ar"]),
+                    ("AH", ["AH", "AH", "A", "Ar", "A", "Ar", "AS", "AS", "A", "Ar", "A", "Ar", "Az", "Az", "A", "Ar", "A", "Ar", "As", "As", "A", "Ar", "A", "Ar", "AH", "AH", "A", "Ar", "A", "Ar", "A", "Ar", "A", "Ar"]),
                     ("iH", ["iH", "iH", "ir", "ir", "ir", "ir", "iS", "iS", "ir", "ir", "ir", "ir", "iz", "iz", "ir", "ir", "ir", "ir", "is", "is", "ir", "ir", "ir", "ir", "iH", "iH", "ir", "ir", "ir", "ir", "ir", "ir", "ir", "ir"]),
                     ("IH", ["IH", "IH", "Ir", "Ir", "Ir", "Ir", "IS", "IS", "Ir", "Ir", "Ir", "Ir", "Iz", "Iz", "Ir", "Ir", "Ir", "Ir", "Is", "Is", "Ir", "Ir", "Ir", "Ir", "IH", "IH", "Ir", "Ir", "Ir", "Ir", "Ir", "Ir", "Ir", "Ir"]),
                     ("uH", ["uH", "uH", "ur", "ur", "ur", "ur", "uS", "uS", "ur", "ur", "ur", "ur", "uz", "uz", "ur", "ur", "ur", "ur", "us", "us", "ur", "ur", "ur", "ur", "uH", "uH", "ur", "ur", "ur", "ur", "ur", "ur", "ur", "ur"]),
@@ -170,6 +170,10 @@ cC_words_sandhi = [("a", ["cC", "cC"]),
                    ("O", ["c", "C"])
                    ]
 
+punar_sandhi_initials = ['k', 'K', 'g', 'G', 'c', 'C', 'j', 'J', 'w', 'W', 'q', 'Q', 't', 'T', 'd', 'D', 'p', 'P', 'b', 'B', 'N', 'Y', 'R', 'n', 'm', 'y', 'r', 'l', 'v', 'S', 'z', 's', 'h', 'a', 'A', 'A', 'i', 'i', 'u', 'U', 'f', 'e', 'E', 'o', 'O']
+punar_sandhi = [('r', ['H', 'H', 'r', 'r', 'H', 'H', 'r', 'r', 'H', 'H', 'r', 'r', 'H', 'H', 'r', 'r', 'H', 'H', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r'])
+                ]
+
 vowel_sandhi_msg = '# {final: [(initial, sandhied), ...], ...}\n# for i I u U, the application of these rules only when the form is not a dual has no incidence in the need to generate all sandhied forms here'
 vowel_sandhi_name = 'vowel_sandhi = {'
 # generate_sandhis(vowel_sandhi_initials, vowel_sandhi, vowel_sandhi_name, vowel_sandhi_msg)
@@ -192,8 +196,12 @@ visarga_sandhi2_name = 'visarga_sandhi_2 = {'
 
 absolute_finals_sandhi_msg = '# {final: [(empty_string, new_final), ...], ...}'
 absolute_finals_sandhi_name = 'absolute_finals_sandhi = {'
-generate_sandhis(absolute_finals_sandhi_initials, absolute_finals_sandhi, absolute_finals_sandhi_name, absolute_finals_sandhi_msg)
+# generate_sandhis(absolute_finals_sandhi_initials, absolute_finals_sandhi, absolute_finals_sandhi_name, absolute_finals_sandhi_msg)
 
 cC_words_sandhi_msg = '# {final: [(initial, newFinal), ...], ...}\n# the final consonant is unchanged'
 cC_words_sandhi_name = 'cC_words_sandhi = {'
-generate_sandhis(cC_words_sandhi_initials, cC_words_sandhi, cC_words_sandhi_name, cC_words_sandhi_msg)
+# generate_sandhis(cC_words_sandhi_initials, cC_words_sandhi, cC_words_sandhi_name, cC_words_sandhi_msg)
+
+punar_sandhi_msg = '# {final: [(initial, newFinal), ...], ...}\n# the initial consonant is unchanged'
+punar_sandhi_name = 'punar_sandhi = {'
+generate_sandhis(punar_sandhi_initials, punar_sandhi, punar_sandhi_name, punar_sandhi_msg)

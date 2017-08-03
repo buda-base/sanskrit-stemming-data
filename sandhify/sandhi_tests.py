@@ -11,10 +11,16 @@ def test_sandhis(to_sandhify):
                         - a dict where key=word1 and value=list_of_tuples containing: word2, sandhied_form
     """
     def check_output(one, two, expected, found):
-        if found == expected:
-            output.append('OK: {} + {} => {}'.format(one, two, found))
-        else:
-            output.append('NO! {} + {} => {} instead of "{}"'.format(one, two, found, expected))
+        if len(found) > 1:
+            if expected in found:
+                output.append('OK: {} + {} => {} (reverted to "r" if it was in the original word)'.format(one, two, ' or '.join(found)))
+            else:
+                output.append('NO! {} + {} => {}. Expected:"{}"'.format(one, two, ' or '.join(found), expected))
+        elif len(found) == 1:
+            if expected in found:
+                output.append('OK: {} + {} => {}'.format(one, two, ' or '.join(found)))
+            else:
+                output.append('NO! {} + {} => {}. Expected:"{}"'.format(one, two, ' or '.join(found), expected))
     
     output = []
     if type(to_sandhify) == str and ' ' in to_sandhify:
@@ -40,12 +46,10 @@ def test_sandhis(to_sandhify):
                 check_output(one, two, expected, found)
     return '\n'.join(output)
 
-print(test_sandhis('pustakam /pustakam'))
-
 UBC_examples = [
     ('\t~C V~', ['tat eva/tad eva']),
     ('\n\t~V C~', ['samyak asti/samyag asti']),
-    ('\n\t~V V~', ['rAmasya cAtraH/rAmasya cCatraH']), # does not work because no rule found in the tables
+    ('\n\t~V V~', ['rAmasya cAtraH/rAmasya cCAtraH']), # does not work because no rule found in the tables
     ('\n\thomorganic vowels', ['mA astu/mAstu', 'gacCati iti/gacCatIti', 'guru upeti/gurUpeti']),
     ('\n\tguṇation', ['na iti/neti', 'rAmeRa uktaH/rAmeRoktaH', 'mahA fziH/maharziH']),
     ('\n\tvṛddhization', ['na eti/nEti', 'mahA ozaDiH/mahOzaDiH', 'rAmasya Ekyam/rAmasyEkyam']),
@@ -56,10 +60,24 @@ UBC_examples = [
     ('\n\tFinal: palatal stops', ['vAc /vAk', 'virAj /virAw', 'diS /dik']),
     ('\n\tFinal: nasals', ['pustakam /pustakam', 'karman /karman']),
     ('\n\tFinal: s and r', ['tapas /tapaH', 'pitar /pitaH']),
-    ('\n\tFinal: consonant clusters', ['bhavant /bhavan', 'bhavantkgtrnp /bhavan'])
+    ('\n\tFinal: consonant clusters', ['bhavant /bhavan', 'bhavantkgtrnp /bhavan']),
+    ('\n\tfinal dentals', ['Bavat janma/Bavaj janma', 'etat Danam/etad Danam', 'Bavat deham/Bavad deham', 'tat Saram/tac Caram']),
+    ('\n\tfinal m', ['pustakam paWati/pustakaM paWati', 'vanam gacCAmi/vanaM gacCAmi']),
+    ('\n\tfinal n', ['mahAn qamaraH/mahAR qamaraH', 'etAn cCAtraH/etAMS cCAtraH', 'gacCan ca/gacCaMS ca', 'tAn tAn/tAMs tAn', 'asmin wIkA/asmiMz wIkA']),  # etAn gacCati changed to cCatraH (n+g = n g, following table)
+    ('\n\tbefore l', ['tat lokaH/tal lokaH', 'tAn lokAn/tAMl lokAn']),
+    ('\n\tbefore h', ['vAk hi/vAg Gi', 'tat hi/tad Di']),
+    ('\n\t-aḥ sandhi', ['rAmaH gacCati/rAmo gacCati', "rAmaH asti/rAmo 'sti", 'rAmaH karoti/rAmaH karoti', 'rAmaH calati/rAmaS calati', 'rAmaH wIkAm/rAmaz wIkAm', 'rAmaH tu/rAmas tu', 'rAmaH patati/rAmaH patati', 'rAmaH uvAca/rAma uvAca']),
+    ('\n\t-āḥ sandhi', ['devAH vadanti/devA vadanti', 'devAH eva/devA eva', 'devAH kurvanti/devAH kurvanti', 'devAH patanti/devAH patanti', 'devAH ca/devAS ca', 'devAH wIkA/devAz wIkA', 'devAH tu/devAs tu']),
+    ('\n\t-iḥ -īḥ -uḥ -ūḥ -eḥ -oḥ -aiḥ -auḥ', ['muniH vadati/munir vadati', 'tEH uktam/tEr uktam', 'BUH Buvas/BUr Buvas', 'muniH karoti/muniH karoti', 'agniH ca/agniS ca', 'muneH wIkAm/munez wIkAm', 'tEH tu/tEs tu', 'guruH patati/guruH patati']),
+    ('\n\tException: punar', ['punar punar/punaH punar', 'punar milAmaH/punar milAmaH', 'punar ramati/punaH ramati', 'punar uvAca/punar uvAca'])
     ]
 
+output = []
 for title, examples in UBC_examples:
-    print(title)
+    output.append(title)
     for ex in examples:
-        print(test_sandhis(ex))
+        output.append(test_sandhis(ex))
+
+with open('test_log.txt', 'w', -1, 'utf-8-sig') as g:
+    output = '\n'.join(output)
+    g.write(output)
