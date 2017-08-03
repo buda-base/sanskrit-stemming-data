@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import re
 import os
-from collections import defaultdict
+from collections import OrderedDict
 
 
 def write_file(file_path, content):
@@ -34,7 +34,7 @@ def generate_raw_pairs():
     :return:
     """
     in_path = '../input/Heritage_XML'
-    output = defaultdict(list)
+    output = OrderedDict()
     for file in os.listdir(in_path):
         raw_xml = open_file('{}/{}'.format(in_path, file)).split('\n')
         for line in raw_xml:
@@ -50,6 +50,8 @@ def generate_raw_pairs():
                 stem = remove_SLP1_modifiers(stem)
 
             if form != [] and stem != []:
+                if form not in output.keys(): # initialize the list 
+                    output[form] = []
                 output[form].append(stem)
     # de-duplicate lemmas
     for k, v in output.items():
