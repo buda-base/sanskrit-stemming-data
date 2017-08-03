@@ -1,0 +1,122 @@
+﻿	~C V~
+OK: tat + eva => tad eva
+
+	~V C~
+OK: samyak + asti => samyag asti
+
+	~V V~
+OK: rAmasya + cAtraH => rAmasya cCAtraH
+
+	homorganic vowels
+OK: mA + astu => mAstu
+OK: gacCati + iti => gacCatIti
+OK: guru + upeti => gurUpeti
+
+	guṇation
+OK: na + iti => neti
+OK: rAmeRa + uktaH => rAmeRoktaH
+OK: mahA + fziH => maharziH
+
+	vṛddhization
+OK: na + eti => nEti
+OK: mahA + ozaDiH => mahOzaDiH
+OK: rAmasya + Ekyam => rAmasyEkyam
+
+	semivowels
+OK: iti + uvAca => ityuvAca
+OK: devI + asti => devyasti
+OK: devI + AgacCati => devyAgacCati
+OK: kuru + adya => kurvadya
+OK: bahu + iti => bahviti
+OK: maDu + admi => maDvadmi
+OK: guru + Asanam => gurvAsanam
+
+	guṇa vowels
+OK: te + api => te 'pi
+OK: te + uvAca => ta uvAca
+OK: gfhe + uta => gfha uta
+
+	vṛḍdhi vowels
+OK: SriyE + arTaH => SriyA arTaH
+OK: uBO + uvAca => uBAvuvAca
+
+	Final: non-palatal stops
+OK: anuzwuB +  => anuzwup
+OK: suhfd +  => suhft
+
+	Final: palatal stops
+OK: vAc +  => vAk
+OK: virAj +  => virAw
+OK: diS +  => dik
+
+	Final: nasals
+OK: pustakam +  => pustakam
+OK: karman +  => karman
+
+	Final: s and r
+OK: tapas +  => tapaH
+OK: pitar +  => pitaH
+
+	Final: consonant clusters
+OK: bhavant +  => bhavan
+OK: bhavantkgtrnp +  => bhavan
+
+	final dentals
+OK: Bavat + janma => Bavaj janma
+OK: etat + Danam => etad Danam
+OK: Bavat + deham => Bavad deham
+OK: tat + Saram => tac Caram
+
+	final m
+OK: pustakam + paWati => pustakaM paWati
+OK: vanam + gacCAmi => vanaM gacCAmi
+
+	final n
+OK: mahAn + qamaraH => mahAR qamaraH
+OK: etAn + cCAtraH => etAMS cCAtraH
+OK: gacCan + ca => gacCaMS ca
+OK: tAn + tAn => tAMs tAn
+OK: asmin + wIkA => asmiMz wIkA
+
+	before l
+OK: tat + lokaH => tal lokaH
+OK: tAn + lokAn => tAMl lokAn
+
+	before h
+OK: vAk + hi => vAg Gi
+OK: tat + hi => tad Di
+
+	-aḥ sandhi
+OK: rAmaH + gacCati => rAmo gacCati or rAmar gacCati (reverted to "r" if it was in the original word)
+OK: rAmaH + asti => rAmo 'sti
+OK: rAmaH + karoti => rAmaH karoti
+OK: rAmaH + calati => rAmaS calati
+OK: rAmaH + wIkAm => rAmaz wIkAm
+OK: rAmaH + tu => rAmas tu
+OK: rAmaH + patati => rAmaH patati
+OK: rAmaH + uvAca => rAma uvAca
+
+	-āḥ sandhi
+OK: devAH + vadanti => devA vadanti
+OK: devAH + eva => devA eva
+OK: devAH + kurvanti => devAH kurvanti
+OK: devAH + patanti => devAH patanti
+OK: devAH + ca => devAS ca
+OK: devAH + wIkA => devAz wIkA
+OK: devAH + tu => devAs tu
+
+	-iḥ -īḥ -uḥ -ūḥ -eḥ -oḥ -aiḥ -auḥ
+OK: muniH + vadati => munir vadati
+OK: tEH + uktam => tEr uktam
+OK: BUH + Buvas => BUr Buvas
+OK: muniH + karoti => muniH karoti
+OK: agniH + ca => agniS ca
+OK: muneH + wIkAm => munez wIkAm
+OK: tEH + tu => tEs tu
+OK: guruH + patati => guruH patati
+
+	Exception: punar
+OK: punar + punar => punaH punar
+OK: punar + milAmaH => punar milAmaH
+OK: punar + ramati => punaH ramati
+OK: punar + uvAca => punar uvAca
