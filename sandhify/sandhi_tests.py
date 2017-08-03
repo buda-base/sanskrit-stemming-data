@@ -46,6 +46,8 @@ def test_sandhis(to_sandhify):
                 check_output(one, two, expected, found)
     return '\n'.join(output)
 
+print(test_sandhis('div div/div div'))
+
 UBC_examples = [
     ('\t~C V~', ['tat eva/tad eva']),
     ('\n\t~V C~', ['samyak asti/samyag asti']),

@@ -35,7 +35,7 @@ def apply_sandhi(current_word, next_word):
                 sandhied_next_word = sandhied_initial+next_word.lstrip(initial)
                 applied.append(sandhied+sandhied_next_word)
     else:
-        applied.append('"N/A"')
+        applied.append(current_word+' '+next_word)
     return applied
 
 if __name__ == "__main__":

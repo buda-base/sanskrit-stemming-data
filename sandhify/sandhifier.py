@@ -164,7 +164,7 @@ def apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandh
             final = final[1:]
             diff = '-+{}/'.format(final)
             add_entries(sandhied, stem+'%'+diff, '')
-        else:        
+        elif final in absolute_finals_sandhi.keys():        
             for rule in absolute_finals_sandhi[final]:
                 initial = rule[0] # empty string
                 new_final = rule[1]
@@ -307,7 +307,13 @@ def sandhied_with_lemmas(raw_pairs):
     """
     total_sandhied = []
     for infl, non_infl in raw_pairs:
-        sandhied = apply_all_sandhis(infl)
+        # adding the lemmas to the total output
+        all_non_infl = non_infl.split('/')
+        all_non_infl_entries = ['{},,/'.format(a) for a in all_non_infl]
+        total_sandhied.extend(all_non_infl_entries)
+        
+        sandhied = ['{},,/'.format(infl)] # include the inflected form
+        sandhied.extend(apply_all_sandhis(infl))
         stems = non_infl.split('/')
         for entry in sandhied:
             parts = entry.split(',')
