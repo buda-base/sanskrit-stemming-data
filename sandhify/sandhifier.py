@@ -141,6 +141,11 @@ def apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi):
 
 def apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandhi):
     """
+    Generates all the sandhis from the 1st visarga table
+
+    :param sandhied: the OrderedDict receiving the generated forms
+    :param inflected_form: unlike other rules. clusters of consonants have to be detected, so the whole inflected form is taken
+    :param absolute_finals_sandhi: from sandhi_rules.py {final: [(initial, new_second_final+new_final), ...], ...}
     """
     # find ending (can be a cluster of consonants or a single one)
     consonants = ["k", "K", "g", "G", "N", "c", "C", "j", "J", "Y", "w", "W", "q", "Q", "R", "t", "T", "d", "D", "n", "p", "P", "b", "B", "m", "y", "r", "l", "v", "S", "z", "s", "h"]

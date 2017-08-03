@@ -12,8 +12,8 @@ def find_sandhi(first, second):
     else:
         initial = second
         for possible_sandhi in all_sandhis:
-            possible_initials = possible_sandhi.split(',')[1]
-            if initial == possible_initials:
+            possible_initials = possible_sandhi.split(',')[1].split(':')
+            if initial in possible_initials:
                 possible.append(possible_sandhi)
     
     if possible:

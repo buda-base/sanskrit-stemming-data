@@ -40,7 +40,7 @@ def test_sandhis(to_sandhify):
                 check_output(one, two, expected, found)
     return '\n'.join(output)
 
-print(test_sandhis('bhavant /bhavan'))
+print(test_sandhis('pustakam /pustakam'))
 
 UBC_examples = [
     ('\t~C V~', ['tat eva/tad eva']),
@@ -52,9 +52,11 @@ UBC_examples = [
     ('\n\tsemivowels', ['iti uvAca/ityuvAca', 'devI asti/devyasti', 'devI AgacCati/devyAgacCati', 'kuru adya/kurvadya', 'bahu iti/bahviti', 'maDu admi/maDvadmi', 'guru Asanam/gurvAsanam']),
     ('\n\tguṇa vowels', ["te api/te 'pi", 'te uvAca/ta uvAca', 'gfhe uta/gfha uta']),
     ('\n\tvṛḍdhi vowels', ['SriyE arTaH/SriyA arTaH', 'uBO uvAca/uBAvuvAca']),
-    ('\n\t~C non-palatal stops', ['anuzwuB /anuzwup', 'suhfd /suhft']), # the space stands for an empty string, triggering the final sandhi.
-    ('\n\t~C palatal stops', ['vAc /vAk', 'virAj /virAw', 'diS /dik']),
-    ('\n\t~C nasals', ['pustakam /pustakam', 'karman /karman'])
+    ('\n\tFinal: non-palatal stops', ['anuzwuB /anuzwup', 'suhfd /suhft']), # the space stands for an empty string, triggering the final sandhi.
+    ('\n\tFinal: palatal stops', ['vAc /vAk', 'virAj /virAw', 'diS /dik']),
+    ('\n\tFinal: nasals', ['pustakam /pustakam', 'karman /karman']),
+    ('\n\tFinal: s and r', ['tapas /tapaH', 'pitar /pitaH']),
+    ('\n\tFinal: consonant clusters', ['bhavant /bhavan', 'bhavantkgtrnp /bhavan'])
     ]
 
 for title, examples in UBC_examples:
