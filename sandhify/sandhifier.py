@@ -80,7 +80,7 @@ def apply_consonant_sandhi_1(sandhied, stem, final, consonant_sandhi_1):
         # calculating diff for consonant sandhi
         diff = ''
         if final == new_final and initial == new_initial:
-            diff = '/'
+            diff = '/- +'
         elif final == new_final and initial != new_initial:
             diff = '/- {}+{}'.format(new_initial, initial)
         elif final != new_final and initial == new_initial:
@@ -108,9 +108,9 @@ def apply_consonant_sandhi_2(sandhied, stem, final, consonant_sandhi_2):
         # calculating diff for consonant sandhi 2
         diff = ''
         if final == new_final:
-            diff = '/'
+            diff = '/- +'
         elif final != new_final:
-            diff = '- {}+{}/'.format(new_final, final)
+            diff = '-{}+{}/- +'.format(new_final, final)
 
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)
@@ -173,6 +173,10 @@ def apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandh
                 add_entries(sandhied, stem+new_final+'%'+diff, '')
 
 
+def apply_cC_words_sandhi(sandhied, stem, final, cC_words_sandhi):
+    pass
+
+
 def apply_all_sandhis(inflected_form):
     """
     Generates all the sandhis for an inflected form.
@@ -195,6 +199,9 @@ def apply_all_sandhis(inflected_form):
     
     if final in consonant_sandhi_2:
         apply_consonant_sandhi_2(sandhied, stem, final, consonant_sandhi_2)
+    
+    if final in cC_words_sandhi:
+        apply_cC_words_sandhi(sandhied, stem, final, cC_words_sandhi)
         
     # visarga sandhi applies to the last two characters
     final = inflected_form[-2:]
