@@ -69,7 +69,29 @@ UBC_examples = [
     ('\n\t-aḥ sandhi', ['rAmaH gacCati/rAmo gacCati', "rAmaH asti/rAmo 'sti", 'rAmaH karoti/rAmaH karoti', 'rAmaH calati/rAmaS calati', 'rAmaH wIkAm/rAmaz wIkAm', 'rAmaH tu/rAmas tu', 'rAmaH patati/rAmaH patati', 'rAmaH uvAca/rAma uvAca']),
     ('\n\t-āḥ sandhi', ['devAH vadanti/devA vadanti', 'devAH eva/devA eva', 'devAH kurvanti/devAH kurvanti', 'devAH patanti/devAH patanti', 'devAH ca/devAS ca', 'devAH wIkA/devAz wIkA', 'devAH tu/devAs tu']),
     ('\n\t-iḥ -īḥ -uḥ -ūḥ -eḥ -oḥ -aiḥ -auḥ', ['muniH vadati/munir vadati', 'tEH uktam/tEr uktam', 'BUH Buvas/BUr Buvas', 'muniH karoti/muniH karoti', 'agniH ca/agniS ca', 'muneH wIkAm/munez wIkAm', 'tEH tu/tEs tu', 'guruH patati/guruH patati']),
-    ('\n\tException: punar', ['punar punar/punaH punar', 'punar milAmaH/punar milAmaH', 'punar ramati/punaH ramati', 'punar uvAca/punar uvAca'])
+    ('\n\tException: punar', ['punar punar/punaH punar', 'punar milAmaH/punar milAmaH', 'punar ramati/punaH ramati', 'punar uvAca/punar uvAca']),
+    ('\n\tSpecial cases from the tables', ['wordi aword/wordyaword', 
+                                           'wordI aword/wordyaword', 
+                                           'wordu aword/wordvaword', 
+                                           'wordU aword/wordvaword', 
+                                           "worde aword/worde 'word", 
+                                           'wordo Aword/wordavAword', 
+                                           'wordaN aword/wordaNN aword', 
+                                           'wordAN aword/wordAN aword', 
+                                           'wordan aword/wordann aword', 
+                                           'wordAn aword/wordAn aword', 
+                                           'wordn Sword/wordY Sword', 
+                                           "wordaH aword/wordo 'word", 
+                                           'wordaH oword/worda oword', 
+                                           'wordiH aword/wordir aword', 
+                                           'wordiH rword/wordI rword', 
+                                           'wordUH rword/wordU rword', 
+                                           'wordaH gword/wordo gword', 
+                                           'wordaH cword/wordaS cword', 
+                                           'wordAH gword/wordA gword', 
+                                           'wordAH cword/wordAS cword', 
+                                           'wordiH gword/wordir gword', 
+                                           'wordiH cword/wordiS cword'])
     ]
 
 output = []

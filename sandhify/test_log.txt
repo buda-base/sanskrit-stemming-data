@@ -120,3 +120,27 @@ ok. punar + punar => punaH punar
 ok. punar + milAmaH => punar milAmaH
 ok. punar + ramati => punaH ramati
 ok. punar + uvAca => punar uvAca
+
+	Special cases from the tables
+ok. wordi + aword => wordyaword OR wordi aword            (most probably a special case. see UBC's tables)
+ok. wordI + aword => wordyaword OR wordI aword            (most probably a special case. see UBC's tables)
+ok. wordu + aword => wordvaword OR wordu aword            (most probably a special case. see UBC's tables)
+ok. wordU + aword => wordvaword OR wordU aword            (most probably a special case. see UBC's tables)
+ok. worde + aword => worde 'word OR worde aword            (most probably a special case. see UBC's tables)
+ok. wordo + Aword => wordavAword OR worda Aword            (most probably a special case. see UBC's tables)
+ok. wordaN + aword => wordaNN aword
+ok. wordAN + aword => wordAN aword
+ok. wordan + aword => wordann aword
+ok. wordAn + aword => wordAn aword
+ok. wordn + Sword => wordY Sword OR wordY Cword            (most probably a special case. see UBC's tables)
+ok. wordaH + aword => wordo 'word
+ok. wordaH + oword => worda oword
+ok. wordiH + aword => wordir aword
+ok. wordiH + rword => wordI rword
+ok. wordUH + rword => wordU rword
+ok. wordaH + gword => wordo gword OR wordar gword            (most probably a special case. see UBC's tables)
+ok. wordaH + cword => wordaS cword
+ok. wordAH + gword => wordA gword OR wordAr gword            (most probably a special case. see UBC's tables)
+ok. wordAH + cword => wordAS cword
+ok. wordiH + gword => wordir gword
+ok. wordiH + cword => wordiS cword
