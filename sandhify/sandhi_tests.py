@@ -13,14 +13,14 @@ def test_sandhis(to_sandhify):
     def check_output(one, two, expected, found):
         if len(found) > 1:
             if expected in found:
-                output.append('OK: {} + {} => {} (reverted to "r" if it was in the original word)'.format(one, two, ' or '.join(found)))
+                output.append("ok {} + {} => {}            (most probably a special case. see UBC's tables)".format(one, two, ' OR '.join(found)))
             else:
-                output.append('NO! {} + {} => {}. Expected:"{}"'.format(one, two, ' or '.join(found), expected))
+                output.append('NO! {} + {} => {}. Expected:"{}"'.format(one, two, ' OR '.join(found), expected))
         elif len(found) == 1:
             if expected in found:
-                output.append('OK: {} + {} => {}'.format(one, two, ' or '.join(found)))
+                output.append('ok {} + {} => {}'.format(one, two, ' OR '.join(found)))
             else:
-                output.append('NO! {} + {} => {}. Expected:"{}"'.format(one, two, ' or '.join(found), expected))
+                output.append('NO! {} + {} => {}. Expected:"{}"'.format(one, two, ' OR '.join(found), expected))
     
     output = []
     if type(to_sandhify) == str and ' ' in to_sandhify:
@@ -46,7 +46,7 @@ def test_sandhis(to_sandhify):
                 check_output(one, two, expected, found)
     return '\n'.join(output)
 
-print(test_sandhis('div div/div div'))
+print(test_sandhis('gacCati iti/gacCatIti'))
 
 UBC_examples = [
     ('\t~C V~', ['tat eva/tad eva']),
@@ -66,7 +66,7 @@ UBC_examples = [
     ('\n\tfinal dentals', ['Bavat janma/Bavaj janma', 'etat Danam/etad Danam', 'Bavat deham/Bavad deham', 'tat Saram/tac Caram']),
     ('\n\tfinal m', ['pustakam paWati/pustakaM paWati', 'vanam gacCAmi/vanaM gacCAmi']),
     ('\n\tfinal n', ['mahAn qamaraH/mahAR qamaraH', 'etAn cCAtraH/etAMS cCAtraH', 'gacCan ca/gacCaMS ca', 'tAn tAn/tAMs tAn', 'asmin wIkA/asmiMz wIkA']),  # etAn gacCati changed to cCatraH (n+g = n g, following table)
-    ('\n\tbefore l', ['tat lokaH/tal lokaH', 'tAn lokAn/tAMl lokAn']),
+    ('\n\tbefore l', ['tat lokaH/tal lokaH', 'tAn lokAn/tAM lokAn']),
     ('\n\tbefore h', ['vAk hi/vAg Gi', 'tat hi/tad Di']),
     ('\n\t-aḥ sandhi', ['rAmaH gacCati/rAmo gacCati', "rAmaH asti/rAmo 'sti", 'rAmaH karoti/rAmaH karoti', 'rAmaH calati/rAmaS calati', 'rAmaH wIkAm/rAmaz wIkAm', 'rAmaH tu/rAmas tu', 'rAmaH patati/rAmaH patati', 'rAmaH uvAca/rAma uvAca']),
     ('\n\t-āḥ sandhi', ['devAH vadanti/devA vadanti', 'devAH eva/devA eva', 'devAH kurvanti/devAH kurvanti', 'devAH patanti/devAH patanti', 'devAH ca/devAS ca', 'devAH wIkA/devAz wIkA', 'devAH tu/devAs tu']),

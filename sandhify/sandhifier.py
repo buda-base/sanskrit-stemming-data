@@ -249,6 +249,9 @@ def apply_all_sandhis(inflected_form):
     final = inflected_form[-2:]
     stem = inflected_form[:-2]
     
+    if final in consonant_sandhi_1_vowels:
+        apply_visarga_sandhi(sandhied, stem, final, consonant_sandhi_1_vowels)
+    
     if final in visarga_sandhi_1:
         apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi_1)
     
