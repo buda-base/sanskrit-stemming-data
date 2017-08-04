@@ -13,12 +13,12 @@ def test_sandhis(to_sandhify):
     def check_output(one, two, expected, found):
         if len(found) > 1:
             if expected in found:
-                output.append("ok {} + {} => {}            (most probably a special case. see UBC's tables)".format(one, two, ' OR '.join(found)))
+                output.append("ok. {} + {} => {}            (most probably a special case. see UBC's tables)".format(one, two, ' OR '.join(found)))
             else:
                 output.append('NO! {} + {} => {}. Expected:"{}"'.format(one, two, ' OR '.join(found), expected))
         elif len(found) == 1:
             if expected in found:
-                output.append('ok {} + {} => {}'.format(one, two, ' OR '.join(found)))
+                output.append('ok. {} + {} => {}'.format(one, two, ' OR '.join(found)))
             else:
                 output.append('NO! {} + {} => {}. Expected:"{}"'.format(one, two, ' OR '.join(found), expected))
     
@@ -45,8 +45,6 @@ def test_sandhis(to_sandhify):
                 found = apply_sandhi(current, n)
                 check_output(one, two, expected, found)
     return '\n'.join(output)
-
-print(test_sandhis('gacCati iti/gacCatIti'))
 
 UBC_examples = [
     ('\t~C V~', ['tat eva/tad eva']),

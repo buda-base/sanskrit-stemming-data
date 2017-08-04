@@ -1,122 +1,122 @@
 ﻿	~C V~
-ok tat + eva => tad eva
+ok. tat + eva => tad eva
 
 	~V C~
-ok samyak + asti => samyag asti
+ok. samyak + asti => samyag asti
 
 	~V V~
-ok rAmasya + cAtraH => rAmasya cCAtraH
+ok. rAmasya + cAtraH => rAmasya cCAtraH
 
 	homorganic vowels
-ok mA + astu => mAstu
-ok gacCati + iti => gacCatIti OR gacCati iti            (most probably a special case. see UBC's tables)
-ok guru + upeti => gurUpeti OR guru upeti            (most probably a special case. see UBC's tables)
+ok. mA + astu => mAstu
+ok. gacCati + iti => gacCatIti OR gacCati iti            (most probably a special case. see UBC's tables)
+ok. guru + upeti => gurUpeti OR guru upeti            (most probably a special case. see UBC's tables)
 
 	guṇation
-ok na + iti => neti
-ok rAmeRa + uktaH => rAmeRoktaH
-ok mahA + fziH => maharziH
+ok. na + iti => neti
+ok. rAmeRa + uktaH => rAmeRoktaH
+ok. mahA + fziH => maharziH
 
 	vṛddhization
-ok na + eti => nEti
-ok mahA + ozaDiH => mahOzaDiH
-ok rAmasya + Ekyam => rAmasyEkyam
+ok. na + eti => nEti
+ok. mahA + ozaDiH => mahOzaDiH
+ok. rAmasya + Ekyam => rAmasyEkyam
 
 	semivowels
-ok iti + uvAca => ityuvAca OR iti uvAca            (most probably a special case. see UBC's tables)
-ok devI + asti => devyasti OR devI asti            (most probably a special case. see UBC's tables)
-ok devI + AgacCati => devyAgacCati OR devI AgacCati            (most probably a special case. see UBC's tables)
-ok kuru + adya => kurvadya OR kuru adya            (most probably a special case. see UBC's tables)
-ok bahu + iti => bahviti OR bahu iti            (most probably a special case. see UBC's tables)
-ok maDu + admi => maDvadmi OR maDu admi            (most probably a special case. see UBC's tables)
-ok guru + Asanam => gurvAsanam OR guru Asanam            (most probably a special case. see UBC's tables)
+ok. iti + uvAca => ityuvAca OR iti uvAca            (most probably a special case. see UBC's tables)
+ok. devI + asti => devyasti OR devI asti            (most probably a special case. see UBC's tables)
+ok. devI + AgacCati => devyAgacCati OR devI AgacCati            (most probably a special case. see UBC's tables)
+ok. kuru + adya => kurvadya OR kuru adya            (most probably a special case. see UBC's tables)
+ok. bahu + iti => bahviti OR bahu iti            (most probably a special case. see UBC's tables)
+ok. maDu + admi => maDvadmi OR maDu admi            (most probably a special case. see UBC's tables)
+ok. guru + Asanam => gurvAsanam OR guru Asanam            (most probably a special case. see UBC's tables)
 
 	guṇa vowels
-ok te + api => te 'pi OR te api            (most probably a special case. see UBC's tables)
-ok te + uvAca => ta uvAca OR te uvAca            (most probably a special case. see UBC's tables)
-ok gfhe + uta => gfha uta OR gfhe uta            (most probably a special case. see UBC's tables)
+ok. te + api => te 'pi OR te api            (most probably a special case. see UBC's tables)
+ok. te + uvAca => ta uvAca OR te uvAca            (most probably a special case. see UBC's tables)
+ok. gfhe + uta => gfha uta OR gfhe uta            (most probably a special case. see UBC's tables)
 
 	vṛḍdhi vowels
-ok SriyE + arTaH => SriyA arTaH
-ok uBO + uvAca => uBAvuvAca
+ok. SriyE + arTaH => SriyA arTaH
+ok. uBO + uvAca => uBAvuvAca
 
 	Final: non-palatal stops
-ok anuzwuB +  => anuzwup
-ok suhfd +  => suhft
+ok. anuzwuB +  => anuzwup
+ok. suhfd +  => suhft
 
 	Final: palatal stops
-ok vAc +  => vAk
-ok virAj +  => virAw
-ok diS +  => dik
+ok. vAc +  => vAk
+ok. virAj +  => virAw
+ok. diS +  => dik
 
 	Final: nasals
-ok pustakam +  => pustakam
-ok karman +  => karman
+ok. pustakam +  => pustakam
+ok. karman +  => karman
 
 	Final: s and r
-ok tapas +  => tapaH
-ok pitar +  => pitaH
+ok. tapas +  => tapaH
+ok. pitar +  => pitaH
 
 	Final: consonant clusters
-ok bhavant +  => bhavan
-ok bhavantkgtrnp +  => bhavan
+ok. bhavant +  => bhavan
+ok. bhavantkgtrnp +  => bhavan
 
 	final dentals
-ok Bavat + janma => Bavaj janma
-ok etat + Danam => etad Danam
-ok Bavat + deham => Bavad deham
-ok tat + Saram => tac Caram
+ok. Bavat + janma => Bavaj janma
+ok. etat + Danam => etad Danam
+ok. Bavat + deham => Bavad deham
+ok. tat + Saram => tac Caram
 
 	final m
-ok pustakam + paWati => pustakaM paWati
-ok vanam + gacCAmi => vanaM gacCAmi
+ok. pustakam + paWati => pustakaM paWati
+ok. vanam + gacCAmi => vanaM gacCAmi
 
 	final n
-ok mahAn + qamaraH => mahAR qamaraH
-ok etAn + cCAtraH => etAMS cCAtraH
-ok gacCan + ca => gacCaMS ca
-ok tAn + tAn => tAMs tAn
-ok asmin + wIkA => asmiMz wIkA
+ok. mahAn + qamaraH => mahAR qamaraH
+ok. etAn + cCAtraH => etAMS cCAtraH
+ok. gacCan + ca => gacCaMS ca
+ok. tAn + tAn => tAMs tAn
+ok. asmin + wIkA => asmiMz wIkA
 
 	before l
-ok tat + lokaH => tal lokaH
-ok tAn + lokAn => tAM lokAn
+ok. tat + lokaH => tal lokaH
+ok. tAn + lokAn => tAM lokAn
 
 	before h
-ok vAk + hi => vAg Gi
-ok tat + hi => tad Di
+ok. vAk + hi => vAg Gi
+ok. tat + hi => tad Di
 
 	-aḥ sandhi
-ok rAmaH + gacCati => rAmo gacCati OR rAmar gacCati            (most probably a special case. see UBC's tables)
-ok rAmaH + asti => rAmo 'sti
-ok rAmaH + karoti => rAmaH karoti
-ok rAmaH + calati => rAmaS calati
-ok rAmaH + wIkAm => rAmaz wIkAm
-ok rAmaH + tu => rAmas tu
-ok rAmaH + patati => rAmaH patati
-ok rAmaH + uvAca => rAma uvAca
+ok. rAmaH + gacCati => rAmo gacCati OR rAmar gacCati            (most probably a special case. see UBC's tables)
+ok. rAmaH + asti => rAmo 'sti
+ok. rAmaH + karoti => rAmaH karoti
+ok. rAmaH + calati => rAmaS calati
+ok. rAmaH + wIkAm => rAmaz wIkAm
+ok. rAmaH + tu => rAmas tu
+ok. rAmaH + patati => rAmaH patati
+ok. rAmaH + uvAca => rAma uvAca
 
 	-āḥ sandhi
-ok devAH + vadanti => devA vadanti
-ok devAH + eva => devA eva
-ok devAH + kurvanti => devAH kurvanti
-ok devAH + patanti => devAH patanti
-ok devAH + ca => devAS ca
-ok devAH + wIkA => devAz wIkA
-ok devAH + tu => devAs tu
+ok. devAH + vadanti => devA vadanti
+ok. devAH + eva => devA eva
+ok. devAH + kurvanti => devAH kurvanti
+ok. devAH + patanti => devAH patanti
+ok. devAH + ca => devAS ca
+ok. devAH + wIkA => devAz wIkA
+ok. devAH + tu => devAs tu
 
 	-iḥ -īḥ -uḥ -ūḥ -eḥ -oḥ -aiḥ -auḥ
-ok muniH + vadati => munir vadati
-ok tEH + uktam => tEr uktam
-ok BUH + Buvas => BUr Buvas
-ok muniH + karoti => muniH karoti
-ok agniH + ca => agniS ca
-ok muneH + wIkAm => munez wIkAm
-ok tEH + tu => tEs tu
-ok guruH + patati => guruH patati
+ok. muniH + vadati => munir vadati
+ok. tEH + uktam => tEr uktam
+ok. BUH + Buvas => BUr Buvas
+ok. muniH + karoti => muniH karoti
+ok. agniH + ca => agniS ca
+ok. muneH + wIkAm => munez wIkAm
+ok. tEH + tu => tEs tu
+ok. guruH + patati => guruH patati
 
 	Exception: punar
-ok punar + punar => punaH punar
-ok punar + milAmaH => punar milAmaH
-ok punar + ramati => punaH ramati
-ok punar + uvAca => punar uvAca
+ok. punar + punar => punaH punar
+ok. punar + milAmaH => punar milAmaH
+ok. punar + ramati => punaH ramati
+ok. punar + uvAca => punar uvAca
