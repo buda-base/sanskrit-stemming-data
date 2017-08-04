@@ -18,7 +18,7 @@ def generate_sandhi_rules(initials, sandhi):
 
 def generate_sandhis(initials, sandhi_rules, name, comment):
     """
-    Formats and prints the output of generate_sandhi_rules() so it can simply be pasted in sandhi_rules.py,
+    Formats the output of generate_sandhi_rules() so it can simply be pasted in sandhi_rules.py,
     which is then used by sandhifier.py
 
     :param initials: for generate_sandhi_rules()
