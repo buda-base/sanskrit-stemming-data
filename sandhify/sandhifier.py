@@ -312,7 +312,7 @@ def sandhied_with_lemmas(raw_pairs):
     for infl, non_infl in raw_pairs:
         # adding the lemmas to the total output
         all_non_infl = non_infl.split('/')
-        all_non_infl_entries = ['{},,/'.format(a) for a in all_non_infl]
+        all_non_infl_entries = ['{},,/'.format(a) for a in all_non_infl if a != infl]
         total_sandhied.extend(all_non_infl_entries)
         
         sandhied = ['{},,/'.format(infl)] # include the inflected form
