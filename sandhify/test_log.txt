@@ -50,16 +50,16 @@ ok. virAj +  => virAw
 ok. diS +  => dik
 
 	Final: nasals
-ok. pustakam +  => pustakam
-ok. karman +  => karman
+ok. pustakam +  => pustakaM  OR pustakam  OR pustakam            (most probably a special case. see UBC's tables)
+ok. karman +  => karman  OR karmaM  OR karmaY  OR karmaY C OR karmaMS  OR karmaMz  OR karmaR  OR karmaMs  OR karmann  OR karman            (most probably a special case. see UBC's tables)
 
 	Final: s and r
 ok. tapas +  => tapaH
 ok. pitar +  => pitaH
 
 	Final: consonant clusters
-ok. bhavant +  => bhavan
-ok. bhavantkgtrnp +  => bhavan
+ok. bhavant +  => bhavand  OR bhavanl  OR bhavanc C OR bhavant  OR bhavand D OR bhavanc  OR bhavanj  OR bhavanw  OR bhavanq  OR bhavann  OR bhavan            (most probably a special case. see UBC's tables)
+ok. bhavantkgtrnp +  => bhavantkgtrnb  OR bhavantkgtrnp  OR bhavantkgtrnb B OR bhavantkgtrnm  OR bhavan            (most probably a special case. see UBC's tables)
 
 	final dentals
 ok. Bavat + janma => Bavaj janma

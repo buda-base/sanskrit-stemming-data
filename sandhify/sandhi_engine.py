@@ -6,13 +6,17 @@ def find_sandhi(first, second):
     if len(second) > 0:
         initial = second[0]
         for possible_sandhi in all_sandhis:
-            possible_initials = possible_sandhi.split(',')[1]
+            diffs = possible_sandhi.split(',')[1].split('|')
+            possible_initials_list = [a.split('~')[0] for a in diffs]
+            possible_initials = ':'.join(possible_initials_list)
             if initial in possible_initials:
                 possible.append(possible_sandhi)
     else:
         initial = second
         for possible_sandhi in all_sandhis:
-            possible_initials = possible_sandhi.split(',')[1].split(':')
+            diffs = possible_sandhi.split(',')[1].split('|')
+            possible_initials_list = [a.split('~')[0] for a in diffs]
+            possible_initials = ':'.join(possible_initials_list)
             if initial in possible_initials:
                 possible.append(possible_sandhi)
     
