@@ -33,8 +33,8 @@ ok. guru + Asanam => gurvAsanam OR guru Asanam            (most probably a speci
 
 	guṇa vowels
 ok. te + api => te 'pi OR te api            (most probably a special case. see UBC's tables)
-ok. te + uvAca => ta uvAca OR te uvAca            (most probably a special case. see UBC's tables)
-ok. gfhe + uta => gfha uta OR gfhe uta            (most probably a special case. see UBC's tables)
+ok. te + uvAca => te uvAca OR ta uvAca            (most probably a special case. see UBC's tables)
+ok. gfhe + uta => gfhe uta OR gfha uta            (most probably a special case. see UBC's tables)
 
 	vṛḍdhi vowels
 ok. SriyE + arTaH => SriyA arTaH
@@ -51,15 +51,15 @@ ok. diS +  => dik
 
 	Final: nasals
 ok. pustakam +  => pustakaM  OR pustakam  OR pustakam            (most probably a special case. see UBC's tables)
-ok. karman +  => karman  OR karmaM  OR karmaY  OR karmaY C OR karmaMS  OR karmaMz  OR karmaR  OR karmaMs  OR karmann  OR karman            (most probably a special case. see UBC's tables)
+ok. karman +  => karman  OR karman OR karmaM  OR karmaY  OR karmaY C OR karmaMS  OR karmaMz  OR karmaR  OR karmaMs  OR karmann             (most probably a special case. see UBC's tables)
 
 	Final: s and r
 ok. tapas +  => tapaH
 ok. pitar +  => pitaH
 
 	Final: consonant clusters
-ok. bhavant +  => bhavand  OR bhavanl  OR bhavanc C OR bhavant  OR bhavand D OR bhavanc  OR bhavanj  OR bhavanw  OR bhavanq  OR bhavann  OR bhavan            (most probably a special case. see UBC's tables)
-ok. bhavantkgtrnp +  => bhavantkgtrnb  OR bhavantkgtrnp  OR bhavantkgtrnb B OR bhavantkgtrnm  OR bhavan            (most probably a special case. see UBC's tables)
+ok. bhavant +  => bhavand  OR bhavand D OR bhavanl  OR bhavanc C OR bhavanc  OR bhavant  OR bhavanj  OR bhavanw  OR bhavanq  OR bhavann  OR bhavan            (most probably a special case. see UBC's tables)
+ok. bhavantkgtrnp +  => bhavantkgtrnb  OR bhavantkgtrnb B OR bhavantkgtrnp  OR bhavantkgtrnm  OR bhavan            (most probably a special case. see UBC's tables)
 
 	final dentals
 ok. Bavat + janma => Bavaj janma

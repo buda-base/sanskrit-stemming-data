@@ -311,7 +311,7 @@ def singled_entries(entries):
 def sandhify(inflected_form):
     sandhied = apply_all_sandhis(inflected_form)
     singled = singled_entries(sandhied)
-    return sandhied
+    return singled
 
 
 def sandhied_n_lemmatized_total(raw_pairs):

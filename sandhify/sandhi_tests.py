@@ -46,7 +46,6 @@ def test_sandhis(to_sandhify):
                 check_output(one, two, expected, found)
     return '\n'.join(output)
 
-print(test_sandhis('anuzwuB /anuzwup'))
 
 UBC_examples = [
     ('\t~C V~', ['tat eva/tad eva']),

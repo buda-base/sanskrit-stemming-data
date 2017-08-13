@@ -1,24 +1,26 @@
 from sandhifier import *
 
-def find_sandhi(first, second):
-    all_sandhis = apply_all_sandhis(first)
-    possible = []
+def find_sandhi(first, second):    
     if len(second) > 0:
         initial = second[0]
-        for possible_sandhi in all_sandhis:
-            diffs = possible_sandhi.split(',')[1].split('|')
-            possible_initials_list = [a.split('~')[0] for a in diffs]
-            possible_initials = ':'.join(possible_initials_list)
-            if initial in possible_initials:
-                possible.append(possible_sandhi)
     else:
         initial = second
-        for possible_sandhi in all_sandhis:
-            diffs = possible_sandhi.split(',')[1].split('|')
-            possible_initials_list = [a.split('~')[0] for a in diffs]
-            possible_initials = ':'.join(possible_initials_list)
+    
+    all_sandhis = sandhify(first)
+    
+    possible = []
+    for possible_sandhi in all_sandhis:
+        sandhied, rest = possible_sandhi.split(',') 
+        homonyms = rest.split('|')
+        
+        new_homonyms = []
+        for homn in homonyms:
+            possible_initials = homn.split('~')[0]
             if initial in possible_initials:
-                possible.append(possible_sandhi)
+                new_homonyms.append(homn)
+        
+        if new_homonyms:
+            possible.append('{},{}'.format(sandhied, '|'.join(new_homonyms)))
     
     if possible:
         return possible
@@ -30,14 +32,16 @@ def apply_sandhi(current_word, next_word):
     possible_sandhi = find_sandhi(current_word, next_word)
     if possible_sandhi:
         for possible in possible_sandhi:
-            sandhied = possible.split(',')[0]
-            new_initial = possible.split('/')[1]
-            if new_initial == '':
-               applied.append(sandhied+next_word)
-            else:
-                sandhied_initial, initial = new_initial.lstrip('-').split('+')
-                sandhied_next_word = sandhied_initial+next_word.lstrip(initial)
-                applied.append(sandhied+sandhied_next_word)
+            sandhied, rest = possible.split(',')
+            possible_entries = rest.split('|')
+            for pos in possible_entries:
+                new_initial = pos.split('/')[1]
+                if new_initial == '':
+                    applied.append(sandhied+next_word)
+                else:
+                    sandhied_initial, initial = new_initial.lstrip('-').split('+')
+                    sandhied_next_word = sandhied_initial+next_word.lstrip(initial)
+                    applied.append(sandhied+sandhied_next_word)
     else:
         applied.append(current_word+' '+next_word)
     return applied
