@@ -1,3 +1,4 @@
+# encoding: utf-8
 from _collections import OrderedDict
 def generate_sandhi_rules(initials, sandhi):
     """

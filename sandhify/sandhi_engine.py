@@ -1,3 +1,4 @@
+# encoding: utf-8
 from sandhifier import *
 
 def find_sandhi(first, second):    

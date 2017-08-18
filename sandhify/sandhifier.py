@@ -1,3 +1,4 @@
+# encoding: utf-8
 from sandhi_rules import *
 from collections import OrderedDict
 import re

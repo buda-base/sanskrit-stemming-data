@@ -1,3 +1,4 @@
+# encoding: utf-8
 from sandhi_engine import *
 
 
@@ -46,6 +47,7 @@ def test_sandhis(to_sandhify):
                 check_output(one, two, expected, found)
     return '\n'.join(output)
 
+print(test_sandhis('Darma ata/DarmAta'))
 
 UBC_examples = [
     ('\t~C V~', ['tat eva/tad eva']),
