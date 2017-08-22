@@ -278,10 +278,6 @@ def find_uninflected_stem(stem, form):
     :param form: given form
     :return: a diff: '-<number of chars to delete>+<characters to add>'
     """
-    if len(stem) <= len(form):
-        max = len(stem)
-    else:
-        max = len(form)
     i = 0
     while i <= len(stem)-1 and i <= len(form)-1 and stem[i] == form[i]:
         i += 1
@@ -302,7 +298,8 @@ def singled_entries(entries):
         if form not in singled.keys():
             singled[form] = [value]
         else:
-            singled[form].append(value)
+            if value not in singled[form]:
+                singled[form].append(value)
     output = []
     for k, v in singled.items():
         output.append(k+','+'|'.join(v))
@@ -356,9 +353,9 @@ def sandhied_n_lemmatized_total(raw_pairs):
             new_initials = parts[1].split('/')[1]
             operations = []
             for stem in stems:
-                op = find_uninflected_stem(stem, sandhied_form)
-                if op != '':
-                    operations.append(op)
+                operation = find_uninflected_stem(stem, sandhied_form)
+                if operation != '':
+                    operations.append(operation)
             total_sandhied.append(sandhied_form + ',' + initial + '~' + ';'.join(operations)+'/'+new_initials)
     
     singled = singled_entries(total_sandhied) 
