@@ -20,19 +20,19 @@ A word-list containing all the sandhied inflected forms in Heritage's XML files.
 
 Each line is formatted as follows:
 
- - `<sandhied_inflected_form>,<initial>~<diffs>/<initial_diff>=<sandhi_type>`
- - `<diffs>`: `<diff_to_1st_lemma>;<diff_to_2nd_lemma>;…`
- - `<diff_to_nth_lemma>`: `-<number_of_chars_to_delete>+<chars_to_add>`
- - `<initial_diff>`: `-<sandhied_initial>+<initial>`
- - `<sandhi_type>`:  
- 					- 0: no sandhi
- 					- 1: vowel sandhi
- 					- 2: consonant sandhi 1
- 					- 3: consonant sandhi 2
- 					- 4: visarga sandhi
- 					- 5: absolute finals sandhi
- 					- 6: "cC"-words sandhi
- 					- 7: special sandhi: "punar" 
+ * `<sandhied_inflected_form>,<initial>~<diffs>/<initial_diff>=<sandhi_type>`
+ * `<diffs>`: `<diff_to_1st_lemma>;<diff_to_2nd_lemma>;…`
+ * `<diff_to_nth_lemma>`: `-<number_of_chars_to_delete>+<chars_to_add>`
+ * `<initial_diff>`: `-<sandhied_initial>+<initial>`
+ * `<sandhi_type>`:  
+    * `0`: no sandhi
+    * `1`: vowel sandhi
+    * `2`: consonant sandhi 1
+    * `3`: consonant sandhi 2
+    * `4`: visarga sandhi
+    * `5`: absolute finals sandhi
+    * `6`: "cC"-words sandhi
+    * `7`: special sandhi: "punar" 
 
 The space between the sandhied words is preserved except for the vowel sandhis where the final and initial vowels coalesce.
 
