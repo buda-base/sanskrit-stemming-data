@@ -59,7 +59,8 @@ def apply_vowel_sandhi(sandhied, stem, final, vowel_sandhi):
             diff = '/-+{}'.format(initial)
         else:
             diff = '-{}+{}/-+{}'.format(new_final, final, initial)
-            
+        
+        diff += '=1' # adding sandhi type
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)        
 
@@ -89,6 +90,7 @@ def apply_consonant_sandhi_1(sandhied, stem, final, consonant_sandhi_1):
         else:
             diff = '-{}+{}/- {}+{}'.format(new_final, final, new_initial, initial)
         
+        diff += '=2' # adding sandhi type
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)
 
@@ -112,7 +114,8 @@ def apply_consonant_sandhi_2(sandhied, stem, final, consonant_sandhi_2):
             diff = '/- +'
         elif final != new_final:
             diff = '-{}+{}/- +'.format(new_final, final)
-
+        
+        diff += '=3' # adding sandhi type
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)
 
@@ -142,6 +145,7 @@ def apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi):
         elif final != new_final:
             diff = '-{}+{}/- +'.format(new_final, final)
         
+        diff += '=4' # adding sandhi type
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)
 
@@ -176,6 +180,7 @@ def apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandh
                 elif final != new_final:
                     diff = '-{}+{}/'.format(new_final, final)
                 
+                diff += '=5' # adding sandhi type
                 # adding the entries
                 add_entries(sandhied, stem+new_final+'%'+diff, '')
 
@@ -195,6 +200,7 @@ def apply_cC_words_sandhi(sandhied, stem, final, cC_words_sandhi):
         
         diff = '/- {}+{}'.format(new_initial, initial)
         
+        diff += '=6' # adding sandhi type
         # adding the entries
         add_entries(sandhied, stem+final+'%'+diff, initial)
 
@@ -217,6 +223,7 @@ def apply_punar_sandhi(sandhied, punar_sandhi):
         elif final != new_final:
             diff = '-{}+{}/- +'.format(new_final, final)
         
+        diff += '=7' # adding sandhi type
         # adding the entries
         add_entries(sandhied, stem+new_final+'%'+diff, initial)
 
@@ -334,15 +341,15 @@ def sandhied_n_lemmatized_total(raw_pairs):
     lemmas = {}
     
     total_sandhied = []
-    for infl, non_infl in raw_pairs:
+    for infl, non_infl in raw_pairs[:100]:
         # adding the lemmas to the total output
         all_non_infl = non_infl.split('/')
-        all_non_infl_entries = ['{},~/'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
+        all_non_infl_entries = ['{},~/=0'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
         total_sandhied.extend(all_non_infl_entries)
         
         sandhied = []
         if infl not in all_non_infl: # include the inflected form
-            sandhied.append('{},~/'.format(infl))
+            sandhied.append('{},~/=0'.format(infl))
         sandhied.extend(apply_all_sandhis(infl))
         stems = non_infl.split('/')
         for entry in sandhied:
@@ -370,6 +377,6 @@ if __name__ == "__main__":
 
     total_sandhied = sandhied_n_lemmatized_total(inflected)
 
-    with open('../output/total_output.txt', 'w', -1, 'utf-8-sig') as g:
+    with open('../output/test.txt', 'w', -1, 'utf-8-sig') as g:
         output = '\n'.join(total_sandhied)
         g.write(output)
