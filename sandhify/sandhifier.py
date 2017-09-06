@@ -341,7 +341,7 @@ def sandhied_n_lemmatized_total(raw_pairs):
     lemmas = {}
     
     total_sandhied = []
-    for infl, non_infl in raw_pairs[:100]:
+    for infl, non_infl in raw_pairs:
         # adding the lemmas to the total output
         all_non_infl = non_infl.split('/')
         all_non_infl_entries = ['{},~/=0'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
@@ -377,6 +377,6 @@ if __name__ == "__main__":
 
     total_sandhied = sandhied_n_lemmatized_total(inflected)
 
-    with open('../output/test.txt', 'w', -1, 'utf-8-sig') as g:
+    with open('../output/total_output.txt', 'w', -1, 'utf-8-sig') as g:
         output = '\n'.join(total_sandhied)
         g.write(output)
