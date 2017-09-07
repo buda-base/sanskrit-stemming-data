@@ -12,6 +12,7 @@ def test_sandhis(to_sandhify):
                         - a dict where key=word1 and value=list_of_tuples containing: word2, sandhied_form
     """
     def check_output(one, two, expected, found):
+        # found = [a.strip() for a in found]
         if len(found) > 1:
             if expected in found:
                 output.append("ok. {} + {} => {}            (most probably a special case. see UBC's tables)".format(one, two, ' OR '.join(found)))
@@ -47,7 +48,7 @@ def test_sandhis(to_sandhify):
                 check_output(one, two, expected, found)
     return '\n'.join(output)
 
-print(test_sandhis('Darma ata/DarmAta'))
+print(test_sandhis('karman /karman'))
 
 UBC_examples = [
     ('\t~C V~', ['tat eva/tad eva']),
