@@ -38,7 +38,7 @@ def apply_sandhi(current_word, next_word):
             possible_lemmas = rest.split('|')
             for lemma_diff in possible_lemmas:
                 lemma_diff = lemma_diff.split('=')[0] # remove the sandhi type information for the rest of the processing
-                new_initial_diff = lemma_diff.split('/')[1] # bug here
+                new_initial_diff = lemma_diff.split('/')[1]
                 if new_initial_diff == '':
                     applied.append(sandhied_current_word+next_word)
                 else:
