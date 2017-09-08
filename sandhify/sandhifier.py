@@ -168,6 +168,7 @@ def apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandh
             stem = stem + final[0]
             final = final[1:]
             diff = '-+{}/'.format(final)
+            diff += '=5' # adding sandhi type
             add_entries(sandhied, stem+'%'+diff, '')
         elif final in absolute_finals_sandhi.keys():        
             for rule in absolute_finals_sandhi[final]:
@@ -342,28 +343,33 @@ def sandhied_n_lemmatized_total(raw_pairs):
     
     total_sandhied = []
     for infl, non_infl in raw_pairs:
+        #print(infl, non_infl)
+        if infl == 'Darma':
+            print(infl, non_infl)
         # adding the lemmas to the total output
         all_non_infl = non_infl.split('/')
         all_non_infl_entries = ['{},~/=0'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
         total_sandhied.extend(all_non_infl_entries)
         
-        sandhied = []
-        if infl not in all_non_infl: # include the inflected form
+        sandhied = ['{},~/=0'.format(infl)]
+        if infl not in all_non_infl: # include the inflected form. may be unnecessary
             sandhied.append('{},~/=0'.format(infl))
         sandhied.extend(apply_all_sandhis(infl))
         stems = non_infl.split('/')
         for entry in sandhied:
             parts = entry.split(',')
             partss = parts[1].split('~')
+            partsss = partss[1].split('=')
             sandhied_form = parts[0]
             initial = partss[0]
-            new_initials = parts[1].split('/')[1]
+            new_initials = partsss[0].split('/')[1]
+            sandhi_type = partsss[1]
             operations = []
             for stem in stems:
                 operation = find_uninflected_stem(stem, sandhied_form)
                 if operation != '':
                     operations.append(operation)
-            total_sandhied.append(sandhied_form + ',' + initial + '~' + ';'.join(operations)+'/'+new_initials)
+            total_sandhied.append(sandhied_form + ',' + initial + '~' + ';'.join(operations)+'/'+new_initials+'='+sandhi_type)
     
     singled = singled_entries(total_sandhied) 
     return singled
