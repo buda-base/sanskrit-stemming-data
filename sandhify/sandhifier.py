@@ -343,17 +343,12 @@ def sandhied_n_lemmatized_total(raw_pairs):
     
     total_sandhied = []
     for infl, non_infl in raw_pairs:
-        #print(infl, non_infl)
-        if infl == 'Darma':
-            print(infl, non_infl)
         # adding the lemmas to the total output
         all_non_infl = non_infl.split('/')
         all_non_infl_entries = ['{},~/=0'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
         total_sandhied.extend(all_non_infl_entries)
         
-        sandhied = ['{},~/=0'.format(infl)]
-        if infl not in all_non_infl: # include the inflected form. may be unnecessary
-            sandhied.append('{},~/=0'.format(infl))
+        sandhied = ['{},~/=0'.format(infl)] # include the inflected form.
         sandhied.extend(apply_all_sandhis(infl))
         stems = non_infl.split('/')
         for entry in sandhied:
