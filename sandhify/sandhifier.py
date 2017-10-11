@@ -1,280 +1,11 @@
 # encoding: utf-8
-from sandhi_rules import *
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join('..', 'resources')))
+from find_applicable_sandhis import FindApplicableSandhis
 from collections import OrderedDict
-import re
 
-
-def add_entries(ordered_dict, form_n_diff, initial):
-    """
-    Used by all the sandhi functions to bring together all the entries sharing the same inflected form and the same diffs
-    format_entries() is then used to reformat the entry in '<form>,<initials>,<diff>'
-
-    an OrderedDict is filled with form+'%'+diff(form_n_diff) as keys and the list of possible initials as value
-    ex: {"rAmo'%-o'+aH/": ['a'], 'rAma%-a+aH/': ['A', 'i', 'u', 'U', 'f', 'e', 'E', 'o', 'O'], ...}
-    """
-    if form_n_diff not in ordered_dict.keys():
-        ordered_dict[form_n_diff] = [initial]
-    elif initial not in ordered_dict[form_n_diff]:  # avoid duplicates as the tables contain many of them
-        ordered_dict[form_n_diff].append(initial)
-
-
-def format_entries(ordered_dict):
-    """
-    Restructures the output of add_entries() into normal entries
-    :param ordered_dict: the output of add_entries()
-    :return: ex: ["rAmo',a,-o'+aH/", 'rAma,A:i:u:U:f:e:E:o:O,-a+aH/', ...]
-    """
-    formatted = []
-    for k, v in ordered_dict.items():
-        parts = k.split('%')
-        form = parts[0]
-        diff = parts[1]
-        initials = ':'.join(v)
-        formatted.append('{},{}~{}'.format(form,initials,diff))
-    return formatted
-
-
-def apply_vowel_sandhi(sandhied, stem, final, vowel_sandhi):
-    """
-    Generates all vowel sandhis for a given inflected form
-
-    :param sandhied: the OrderedDict receiving the generated forms
-    :param stem: the form without the declension
-    :param final: the declension (1 char) used to determine which rule to apply
-    :param vowel_sandhi: from sandhi_rules.py. {final: [(initial, sandhied), ...], ...}
-    """
-    for rule in vowel_sandhi[final]:
-        initial = rule[0]
-        new_final = rule[1]
-        
-        # calculating the diff for vowel sandhi
-        diff = ''
-        if ' ' in new_final:
-            new_final, new_initial = new_final.split(' ')
-            if new_initial == initial:
-                diff = '-{}+{}/- +'.format(new_final, final)
-            else:
-                diff = '-{}+{}/- {}+{}'.format(new_final, final, new_initial, initial)
-        elif final == new_final:
-            diff = '/-+{}'.format(initial)
-        else:
-            diff = '-{}+{}/-+{}'.format(new_final, final, initial)
-        
-        diff += '=1' # adding sandhi type
-        # adding the entries
-        add_entries(sandhied, stem+new_final+'%'+diff, initial)        
-
-
-def apply_consonant_sandhi_1(sandhied, stem, final, consonant_sandhi_1):
-    """
-    Generates all sandhis from the 1st consonant sandhi table
-
-    :param sandhied: the OrderedDict receiving the generated forms
-    :param stem: the form without the declension
-    :param final: the declension (1 char) used to determine which rule to apply
-    :param consonant_sandhi_1: from sandhi_rules.py {final: [(initial, (new_final, new_initial)), ...], ...}
-    """
-    for rule in consonant_sandhi_1[final]:
-        initial = rule[0]
-        new_final = rule[1][0]
-        new_initial = rule[1][1]
-        
-        # calculating diff for consonant sandhi
-        diff = ''
-        if final == new_final and initial == new_initial:
-            diff = '/- +'
-        elif final == new_final and initial != new_initial:
-            diff = '/- {}+{}'.format(new_initial, initial)
-        elif final != new_final and initial == new_initial:
-            diff = '-{}+{}/- +'.format(new_final, final)
-        else:
-            diff = '-{}+{}/- {}+{}'.format(new_final, final, new_initial, initial)
-        
-        diff += '=2' # adding sandhi type
-        # adding the entries
-        add_entries(sandhied, stem+new_final+'%'+diff, initial)
-
-
-def apply_consonant_sandhi_2(sandhied, stem, final, consonant_sandhi_2):
-    """
-    Generates all sandhis from the 2nd consonant sandhi table
-
-    :param sandhied: the OrderedDict receiving the generated forms
-    :param stem: the form without the declension
-    :param final: the declension (1 char) used to determine which rule to apply
-    :param consonant_sandhi_2: from sandhi_rules.py {final: [(initial, new_second_final+new_final), ...], ...}
-    """
-    for rule in consonant_sandhi_2[final]:
-        initial = rule[0]
-        new_final = rule[1]
-        
-        # calculating diff for consonant sandhi 2
-        diff = ''
-        if final == new_final:
-            diff = '/- +'
-        elif final != new_final:
-            diff = '-{}+{}/- +'.format(new_final, final)
-        
-        diff += '=3' # adding sandhi type
-        # adding the entries
-        add_entries(sandhied, stem+new_final+'%'+diff, initial)
-
-
-def apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi):
-    """
-    Generates all the sandhis from the 1st visarga table
-
-    :param sandhied: the OrderedDict receiving the generated forms
-    :param stem: the form without the declension
-    :param final: the declension (2 chars) used to determine which rule to apply
-    :param visarga_sandhi: from sandhi_rules.py {final: [(initial, new_second_final+new_final), ...], ...}
-    """
-    for rule in visarga_sandhi[final]:
-        initial = rule[0]
-        new_final = rule[1]
-        
-        # calculating diff for visarga sandhi 1
-        if final == new_final:
-            diff = '/- +'
-        elif ' ' in new_final:
-            new_final, new_initial = new_final.split(' ')
-            if new_initial == initial:
-                diff = '-{}+{}/- +'.format(new_final, final)
-            else:
-                diff = '-{}+{}/- {}+{}'.format(new_final, final, new_initial, initial)
-        elif final != new_final:
-            diff = '-{}+{}/- +'.format(new_final, final)
-        
-        diff += '=4' # adding sandhi type
-        # adding the entries
-        add_entries(sandhied, stem+new_final+'%'+diff, initial)
-
-
-def apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandhi):
-    """
-    Generates all the sandhis from the 1st visarga table
-
-    :param sandhied: the OrderedDict receiving the generated forms
-    :param inflected_form: unlike other rules. clusters of consonants have to be detected, so the whole inflected form is taken
-    :param absolute_finals_sandhi: from sandhi_rules.py {final: [(initial, new_second_final+new_final), ...], ...}
-    """
-    # find ending (can be a cluster of consonants or a single one)
-    consonants = ["k", "K", "g", "G", "N", "c", "C", "j", "J", "Y", "w", "W", "q", "Q", "R", "t", "T", "d", "D", "n", "p", "P", "b", "B", "m", "y", "r", "l", "v", "S", "z", "s", "h"]
-    if inflected_form[-1] in consonants:
-        stem, final = re.split('(['+''.join(consonants)+']+)$', inflected_form)[:2]
-        
-        # clusters of consonants are reduced to the first consonant
-        if len(final) > 1:
-            stem = stem + final[0]
-            final = final[1:]
-            diff = '-+{}/'.format(final)
-            diff += '=5' # adding sandhi type
-            add_entries(sandhied, stem+'%'+diff, '')
-        elif final in absolute_finals_sandhi.keys():        
-            for rule in absolute_finals_sandhi[final]:
-                initial = rule[0] # empty string
-                new_final = rule[1]
-                
-                # calculating diff for absolute finals sandhi
-                if final == new_final:
-                    diff = '/'
-                elif final != new_final:
-                    diff = '-{}+{}/'.format(new_final, final)
-                
-                diff += '=5' # adding sandhi type
-                # adding the entries
-                add_entries(sandhied, stem+new_final+'%'+diff, '')
-
-
-def apply_cC_words_sandhi(sandhied, stem, final, cC_words_sandhi):
-    """
-    Generates all the sandhis from the cC words table
-
-    :param sandhied: the OrderedDict receiving the generated forms
-    :param stem: the form without the declension
-    :param final: the declension (1 char) used to determine which rule to apply
-    :param cC_words_sandhi: from sandhi_rules.py {final: [(initial, new_initial), ...], ...}
-    """
-    for rule in cC_words_sandhi[final]:
-        initial = rule[0]
-        new_initial = rule[1]
-        
-        diff = '/- {}+{}'.format(new_initial, initial)
-        
-        diff += '=6' # adding sandhi type
-        # adding the entries
-        add_entries(sandhied, stem+final+'%'+diff, initial)
-
-
-def apply_punar_sandhi(sandhied, punar_sandhi):
-    """
-    Generates all sandhis for punar
-    
-    :param cC_words_sandhi: from sandhi_rules.py
-    """
-    stem = 'puna'
-    final = 'r'
-    for rule in punar_sandhi[final]:
-        initial = rule[0]
-        new_final = rule[1]
-        
-        # calculating diff for visarga sandhi 1
-        if final == new_final:
-            diff = '/- +'
-        elif final != new_final:
-            diff = '-{}+{}/- +'.format(new_final, final)
-        
-        diff += '=7' # adding sandhi type
-        # adding the entries
-        add_entries(sandhied, stem+new_final+'%'+diff, initial)
-
-def apply_all_sandhis(inflected_form):
-    """
-    Generates all the sandhis for an inflected form.
-        - 'sandhied' receives the sandhied forms from the sandhi functions
-        - the entries are formatted by format_entries()
-    :param inflected_form: the form to sandhify
-    :return: ex. rAmA['rAmA,a:A,/', 'rAme,i,-e+A/', ...]
-    """
-    sandhied = OrderedDict()
-    
-    # split in stem and ending
-    final = inflected_form[-1]
-    stem = inflected_form[:-1]
-
-    if final in vowel_sandhi:
-        apply_vowel_sandhi(sandhied, stem, final, vowel_sandhi)
-    
-    if final in consonant_sandhi_1:
-        apply_consonant_sandhi_1(sandhied, stem, final, consonant_sandhi_1)
-    
-    if final in consonant_sandhi_2:
-        apply_consonant_sandhi_2(sandhied, stem, final, consonant_sandhi_2)
-    
-    if final in cC_words_sandhi:
-        apply_cC_words_sandhi(sandhied, stem, final, cC_words_sandhi)
-        
-    # visarga sandhi applies to the last two characters
-    final = inflected_form[-2:]
-    stem = inflected_form[:-2]
-    
-    if final in consonant_sandhi_1_vowels:
-        apply_visarga_sandhi(sandhied, stem, final, consonant_sandhi_1_vowels)
-    
-    if final in visarga_sandhi_1:
-        apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi_1)
-    
-    if final in visarga_sandhi_2:
-        apply_visarga_sandhi(sandhied, stem, final, visarga_sandhi_2)
-    
-    apply_absolute_finals_sandhi(sandhied, inflected_form, absolute_finals_sandhi)
-    
-    # Exceptions
-    if inflected_form == 'punar':
-        apply_punar_sandhi(sandhied, punar_sandhi)
-    
-    formatted = format_entries(sandhied)
-    return formatted
+find_sandhis = FindApplicableSandhis('sanskrit')
 
 
 def find_uninflected_stem(stem, form):
@@ -315,7 +46,7 @@ def singled_entries(entries):
 
 
 def sandhify(inflected_form):
-    sandhied = apply_all_sandhis(inflected_form)
+    sandhied = find_sandhis.all_possible_sandhis(inflected_form)
     singled = singled_entries(sandhied)
     return singled
 
@@ -332,7 +63,7 @@ def sandhied_n_lemmatized_total(raw_pairs):
     <initial_diff>: '-<sandhied_initial>+<initial>'
 
     :param raw_pairs: [(inflected_form, lemma), …] generated by raw_parse_Heritage_XML.py
-    :return: ex. ['prezyate,a,-1+;-6+I/-'+', 'aprezyata,A:i:u:U:f:e:E:o:O,-1+;-6+I/', …]
+    :return: ex. ['prezyate,a$-1+;-6+I/-'+', 'aprezyata,A:i:u:U:f:e:E:o:O$-1+;-6+I/', …]
     """
     def is_unknown_lemma(lemma, lemmas):
         if lemma not in lemmas.keys():
@@ -345,15 +76,15 @@ def sandhied_n_lemmatized_total(raw_pairs):
     for infl, non_infl in raw_pairs:
         # adding the lemmas to the total output
         all_non_infl = non_infl.split('/')
-        all_non_infl_entries = ['{},~/=0'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
+        all_non_infl_entries = ['{},$/=0'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
         total_sandhied.extend(all_non_infl_entries)
         
-        sandhied = ['{},~/=0'.format(infl)] # include the inflected form.
-        sandhied.extend(apply_all_sandhis(infl))
+        sandhied = ['{},$/=0'.format(infl)] # include the inflected form.
+        sandhied.extend(find_sandhis.all_possible_sandhis(infl))
         stems = non_infl.split('/')
         for entry in sandhied:
             parts = entry.split(',')
-            partss = parts[1].split('~')
+            partss = parts[1].split('$')
             partsss = partss[1].split('=')
             sandhied_form = parts[0]
             initial = partss[0]
@@ -364,7 +95,7 @@ def sandhied_n_lemmatized_total(raw_pairs):
                 operation = find_uninflected_stem(stem, sandhied_form)
                 if operation != '':
                     operations.append(operation)
-            total_sandhied.append(sandhied_form + ',' + initial + '~' + ';'.join(operations)+'/'+new_initials+'='+sandhi_type)
+            total_sandhied.append(sandhied_form + ',' + initial + '$' + ';'.join(operations)+'/'+new_initials+'='+sandhi_type)
     
     singled = singled_entries(total_sandhied) 
     return singled
