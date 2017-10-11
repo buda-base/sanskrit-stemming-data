@@ -53,7 +53,7 @@ print(test_sandhis('karman /karman'))
 UBC_examples = [
     ('\t~C V~', ['tat eva/tad eva']),
     ('\n\t~V C~', ['samyak asti/samyag asti']),
-    ('\n\t~V V~', ['rAmasya cAtraH/rAmasya cCAtraH']), # does not work because no rule found in the tables
+    ('\n\t~V V~', ['rAmasya CAtraH/rAmasya cCAtraH']), # does not work because no rule found in the tables
     ('\n\thomorganic vowels', ['mA astu/mAstu', 'gacCati iti/gacCatIti', 'guru upeti/gurUpeti']),
     ('\n\tguṇation', ['na iti/neti', 'rAmeRa uktaH/rAmeRoktaH', 'mahA fziH/maharziH']),
     ('\n\tvṛddhization', ['na eti/nEti', 'mahA ozaDiH/mahOzaDiH', 'rAmasya Ekyam/rAmasyEkyam']),

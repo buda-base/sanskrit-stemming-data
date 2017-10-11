@@ -5,7 +5,7 @@ ok. tat + eva => tad eva
 ok. samyak + asti => samyag asti
 
 	~V V~
-ok. rAmasya + cAtraH => rAmasya cCAtraH
+ok. rAmasya + CAtraH => rAmasya cCAtraH
 
 	homorganic vowels
 ok. mA + astu => mAstu

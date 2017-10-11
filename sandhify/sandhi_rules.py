@@ -144,7 +144,7 @@ vowel_sandhi = {
 				("o", "ro"),
 				("O", "rO")],
 		"e": [
-				("a", "e '"),
+				("a", "e '"),#
 				("A", "a A"),
 				("A", "a A"),
 				("i", "a i"),
@@ -157,8 +157,8 @@ vowel_sandhi = {
 				("o", "a o"),
 				("O", "a O"),
 				("a", "e a"),
-				("A", "e A"),
-				("A", "e A"),
+				("A", "e A"),#
+				("A", "e A"),##
 				("i", "e i"),
 				("i", "e i"),
 				("u", "e u"),
@@ -1918,38 +1918,17 @@ absolute_finals_sandhi = {
 # the final consonant is unchanged
 cC_words_sandhi = {
 		"a": [
-				("c", "cC"),
 				("C", "cC")],
-		"A": [
-				("c", "c"),
-				("C", "C")],
 		"i": [
-				("c", "cC"),
 				("C", "cC")],
-		"I": [
-				("c", "c"),
-				("C", "C")],
 		"u": [
-				("c", "cC"),
 				("C", "cC")],
-		"U": [
-				("c", "c"),
-				("C", "C")],
 		"f": [
-				("c", "cC"),
 				("C", "cC")],
 		"e": [
-				("c", "cC"),
 				("C", "cC")],
-		"E": [
-				("c", "c"),
-				("C", "C")],
 		"o": [
-				("c", "cC"),
 				("C", "cC")],
-		"O": [
-				("c", "c"),
-				("C", "C")],
 			}
 # {final: [(initial, newFinal), ...], ...}
 # the initial consonant is unchanged

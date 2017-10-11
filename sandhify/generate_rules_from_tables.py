@@ -248,18 +248,13 @@ absolute_finals_sandhi = [("k", ["k"]),
                           # deal with the consonant clusters in sandhifier
                           ]
 
-cC_words_sandhi_initials = ["c", "C"]
-cC_words_sandhi = [("a", ["cC", "cC"]),
-                   ("A", ["c", "C"]),
-                   ("i", ["cC", "cC"]),
-                   ("I", ["c", "C"]),
-                   ("u", ["cC", "cC"]),
-                   ("U", ["c", "C"]),
-                   ("f", ["cC", "cC"]),
-                   ("e", ["cC", "cC"]),
-                   ("E", ["c", "C"]),
-                   ("o", ["cC", "cC"]),
-                   ("O", ["c", "C"])
+cC_words_sandhi_initials = ["C"]
+cC_words_sandhi = [("a", ["cC"]),
+                   ("i", ["cC"]),
+                   ("u", ["cC"]),
+                   ("f", ["cC"]),
+                   ("e", ["cC"]),
+                   ("o", ["cC"]),
                    ]
 
 punar_sandhi_initials = ['k', 'K', 'g', 'G', 'c', 'C', 'j', 'J', 'w', 'W', 'q', 'Q', 't', 'T', 'd', 'D', 'p', 'P', 'b', 'B', 'N', 'Y', 'R', 'n', 'm', 'y', 'r', 'l', 'v', 'S', 'z', 's', 'h', 'a', 'A', 'A', 'i', 'i', 'u', 'U', 'f', 'e', 'E', 'o', 'O']
