@@ -1,2 +1,2 @@
-wordAS,c:C$-AS+AH/- +=6
+wordAS,c:C-2+AH- +=6
 cword,$/=0
