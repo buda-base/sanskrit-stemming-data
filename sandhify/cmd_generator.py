@@ -51,7 +51,7 @@ class CmdGenerator:
             to_del, to_add = diff.lstrip('-').split('+')
             to_del = str(len(to_del))
             
-            return first_part + '-{}+{}'.format(to_del, to_add) + last_part
+            return '{}$-{}+{}/{}'.format(first_part, to_del, to_add, last_part) 
     
     @staticmethod
     def join_complementary_entries(entries):

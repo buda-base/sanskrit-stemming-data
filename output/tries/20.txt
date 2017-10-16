@@ -1,2 +1,2 @@
-te,a-1+e- '+a=1|a:A:i:u:U:f:e:E:o:O-1+e- +=1
+te,a$-1+e/- '+a=1|a:A:i:u:U:f:e:E:o:O$-1+e/- +=1
 api,$/=0

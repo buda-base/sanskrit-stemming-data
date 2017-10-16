@@ -1,3 +1,3 @@
-ta,A:i:u:U:f:e:E:o:O-1+e- +=1
-te,a:A:i:u:U:f:e:E:o:O-1+e- +=1
+te,a:A:i:u:U:f:e:E:o:O$-1+e/- +=1
+ta,A:i:u:U:f:e:E:o:O$-1+e/- +=1
 uvAca,$/=0

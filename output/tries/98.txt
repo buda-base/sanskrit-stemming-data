@@ -1,2 +1,2 @@
-wordir,g:G:j:J:q:Q:d:D:b:B:n:m-2+iH- +=6
+wordir,g:G:j:J:q:Q:d:D:b:B:n:m$-2+iH/- +=6
 gword,$/=0

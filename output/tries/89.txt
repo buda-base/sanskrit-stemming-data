@@ -1,2 +1,2 @@
-wordo,a-1+aH- '+a=5
+wordo,a$-1+aH/- '+a=5
 aword,$/=0

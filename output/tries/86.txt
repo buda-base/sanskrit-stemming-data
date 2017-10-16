@@ -1,2 +1,2 @@
-wordann,a:A:i:I:u:U:f:e:E:o:O-3+an- +=3
+wordann,a:A:i:I:u:U:f:e:E:o:O$-3+an/- +=3
 aword,$/=0
