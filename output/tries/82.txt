@@ -1,3 +1,2 @@
-worde,a$-e+e/- '+a=1
-worde,a:A:i:u:U:f:e:E:o:O$-e+e/- +=1
+worde,a$-e+e/- '+a=1|a:A:i:u:U:f:e:E:o:O$-e+e/- +=1
 aword,$/=0

@@ -35,9 +35,25 @@ class CmdGenerator:
                 formatted_possible_lemmas.append('{},{}'.format(sandhied, '|'.join(possible_lemmas)))
 
         if formatted_possible_lemmas:
-            return '\n'.join(formatted_possible_lemmas)
+            return self.join_complementary_entries(formatted_possible_lemmas)
         return None
-
+    
+    @staticmethod
+    def join_complementary_entries(entries):
+        joined = {}
+        for entry in entries:
+            form, cmd = entry.split(',')
+            if form in joined.keys():
+                joined[form].append(cmd)
+            else:
+                joined[form] = [cmd]
+        
+        output = []
+        for form, cmds in joined.items():
+            output.append('{},{}'.format(form, '|'.join(cmds)))
+        
+        return '\n'.join(output)
+        
 
 if __name__ == "__main__":
     lang = 'sanskrit'
