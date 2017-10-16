@@ -1,0 +1,3 @@
+wordo,g:G:j:J:q:Q:d:D:b:B:n:m$-o+aH/- +=6
+wordar,g:G:j:J:q:Q:d:D:b:B:n:m$-ar+aH/- +=6
+gword,$/=0

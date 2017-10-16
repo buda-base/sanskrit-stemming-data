@@ -1,0 +1,3 @@
+wordY,S$-Y+n/- +=2
+wordS,S$-S+n/- +=2
+Sword,$/=0
