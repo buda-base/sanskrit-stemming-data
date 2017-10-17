@@ -21,7 +21,7 @@ class CmdGenerator:
             initial_char = word2
 
         all_potential_sandhis = self.find.all_possible_sandhis(word1)
-
+        
         formatted_possible_lemmas = []
         for potential_sandhi in all_potential_sandhis:
             sandhied, rest = potential_sandhi.split(',')
@@ -42,6 +42,16 @@ class CmdGenerator:
         return None
     
     @staticmethod
+    def adjust_new_initial_in_consonant1_sandhi(cmd):
+        print(cmd)
+        if '/=' not in cmd and '-+=' not in cmd and '- +=' not in cmd:
+            initial, remainder = cmd.split('$')
+            new_initial = cmd.split('/-')[1].split('+')[0].strip()
+            if initial != new_initial:
+                return '{}${}'.format(new_initial, remainder)
+        return cmd
+    
+    @staticmethod
     def formatToDelete(command):
         if '$/' in command:
             return command
@@ -53,11 +63,11 @@ class CmdGenerator:
             
             return '{}$-{}+{}/{}'.format(first_part, to_del, to_add, last_part) 
     
-    @staticmethod
-    def join_complementary_entries(entries):
+    def join_complementary_entries(self, entries):
         joined = {}
         for entry in entries:
             form, cmd = entry.split(',')
+            cmd = self.adjust_new_initial_in_consonant1_sandhi(cmd)
             if form in joined.keys():
                 joined[form].append(cmd)
             else:
@@ -67,7 +77,7 @@ class CmdGenerator:
         for form, cmds in joined.items():
             output.append('{},{}'.format(form, '|'.join(cmds)))
         
-        return '\n'.join(output)
+        return '\n'.join(sorted(output))
         
 
 if __name__ == "__main__":

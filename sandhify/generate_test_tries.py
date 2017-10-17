@@ -61,8 +61,8 @@ tests = [
 ["pitar", "", "pitaH"],
 
 # Final: consonant clusters
-["bhavant", "", "bhavan"],
-["bhavantkgtrnp", "", "bhavan"],
+["Bavant", "", "Bavan"],
+["Bavantkgtrnp", "", "Bavan"],
 
 # final dentals
 ["Bavat", "janma", "Bavaj janma"],
