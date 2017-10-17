@@ -1,1 +1,1 @@
-pustakam,$/=8
+pustakam,$/=7
