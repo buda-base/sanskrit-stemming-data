@@ -8,7 +8,7 @@ tests = [
 ["samyak", "asti", "samyag asti"],
 
 # ~V V~
-["rAmasya", "cAtraH", "rAmasya cCAtraH"], # does not work because no rule found in the tables
+["rAmasya", "CAtraH", "rAmasya cCAtraH"], # does not work because no rule found in the tables
 
 # homorganic vowels
 ["mA", "astu", "mAstu"],
