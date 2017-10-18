@@ -4,6 +4,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join('..', 'resources')))
 from find_applicable_sandhis import FindApplicableSandhis
 from collections import OrderedDict
+from tqdm import tqdm
 
 find_sandhis = FindApplicableSandhis('sanskrit')
 
@@ -32,8 +33,9 @@ def find_uninflected_stem(stem, form):
 
 def singled_entries(entries):
     singled = OrderedDict()
-    for line in entries:
+    for line in tqdm(entries):
         form, value = line.split(',')
+        value = adjust_new_initial_in_consonant1_sandhi(value)
         if form not in singled.keys():
             singled[form] = [value]
         else:
@@ -44,6 +46,13 @@ def singled_entries(entries):
         output.append(k+','+'|'.join(v))
     return output
 
+def adjust_new_initial_in_consonant1_sandhi(cmd):
+    if '/=' not in cmd and '-+=' not in cmd and '- +=' not in cmd:
+        initial, remainder = cmd.split('$')
+        new_initial = cmd.split('/-')[1].split('+')[0].strip()
+        if initial != new_initial:
+            return '{}${}'.format(new_initial, remainder)
+    return cmd
 
 def sandhify(inflected_form):
     sandhied = find_sandhis.all_possible_sandhis(inflected_form)
@@ -73,7 +82,7 @@ def sandhied_n_lemmatized_total(raw_pairs):
     lemmas = {}
     
     total_sandhied = []
-    for infl, non_infl in raw_pairs:
+    for infl, non_infl in tqdm(raw_pairs):
         # adding the lemmas to the total output
         all_non_infl = non_infl.split('/')
         all_non_infl_entries = ['{},$/=0'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]

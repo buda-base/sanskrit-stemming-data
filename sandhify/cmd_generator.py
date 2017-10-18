@@ -43,7 +43,6 @@ class CmdGenerator:
     
     @staticmethod
     def adjust_new_initial_in_consonant1_sandhi(cmd):
-        print(cmd)
         if '/=' not in cmd and '-+=' not in cmd and '- +=' not in cmd:
             initial, remainder = cmd.split('$')
             new_initial = cmd.split('/-')[1].split('+')[0].strip()
