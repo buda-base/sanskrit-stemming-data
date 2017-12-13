@@ -4,7 +4,6 @@ import sys
 sys.path.append(os.path.abspath(os.path.join('..', 'resources')))
 from find_applicable_sandhis import FindApplicableSandhis
 from collections import OrderedDict
-from tqdm import tqdm
 
 find_sandhis = FindApplicableSandhis('sanskrit')
 
@@ -33,7 +32,7 @@ def find_uninflected_stem(stem, form):
 
 def singled_entries(entries):
     singled = OrderedDict()
-    for line in tqdm(entries):
+    for line in entries:
         form, value = line.split(',')
         value = adjust_new_initial_in_consonant1_sandhi(value)
         if form not in singled.keys():
@@ -82,7 +81,7 @@ def sandhied_n_lemmatized_total(raw_pairs):
     lemmas = {}
     
     total_sandhied = []
-    for infl, non_infl in tqdm(raw_pairs):
+    for infl, non_infl in raw_pairs:
         # adding the lemmas to the total output
         all_non_infl = non_infl.split('/')
         all_non_infl_entries = ['{},$/=0'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
@@ -110,11 +109,21 @@ def sandhied_n_lemmatized_total(raw_pairs):
     return singled
 
 
+def import_inflected_pairs():
+    input_files = ['../output/heritage_raw_pairs.txt']  # Sanskrit Heritage data
+    folder = '../input/custom_entries'  # folder with files containing custom entries
+    input_files.extend(['{}/{}'.format(folder, f) for f in os.listdir(folder)])
+
+    total = []
+    for in_file in input_files:
+        with open(in_file) as f:
+            total.extend([a.strip().split(',') for a in f.readlines()])
+    return total
+
+
 if __name__ == "__main__":    
     # opening the inflected forms
-    with open('../output/heritage_raw_pairs.txt') as f:
-        list = f.readlines()
-        inflected = [a.strip().split(',') for a in list]
+    inflected = inflected = import_inflected_pairs()
 
     total_sandhied = sandhied_n_lemmatized_total(inflected)
 
