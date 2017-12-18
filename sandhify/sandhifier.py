@@ -110,9 +110,9 @@ def sandhied_n_lemmatized_total(raw_pairs):
 
 
 def import_inflected_pairs():
-    input_files = ['../output/heritage_raw_pairs.txt']  # Sanskrit Heritage data
     folder = '../input/custom_entries'  # folder with files containing custom entries
-    input_files.extend(['{}/{}'.format(folder, f) for f in os.listdir(folder)])
+    input_files = ['{}/{}'.format(folder, f) for f in os.listdir(folder)]
+    input_files.append('../output/heritage_raw_pairs.txt')  # Sanskrit Heritage data
 
     total = []
     for in_file in input_files:
