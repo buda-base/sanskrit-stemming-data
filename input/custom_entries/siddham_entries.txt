@@ -1,4 +1,4 @@
-UdDvaMsita,UdDvaMs
+udDvaMsita,udDvaMs
 pravitata,pravitan
 anuzaNga,anusaj
 tattvA,tattva
