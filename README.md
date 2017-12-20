@@ -16,11 +16,16 @@ Each line is formatted as follows: `inflected<space>operation`
 Note: see [this readme](./SH_parse/Readme.md)
 
 #### `output/total_output.txt`
-A word-list containing all the sandhied inflected forms in Heritage's XML files.
+A word-list containing all the sandhied inflected forms in Heritage's XML files and the files in `input/custom_entries/`.
+
+Since this file is 128mo at writing time, it won't be included in the repository, but will need to be generated with the following command:
+```
+python3 sandhify/sandhifier.py
+```
 
 Each line is formatted as follows:
 
- * `<sandhied_inflected_form>,<initial>~<diffs>/<initial_diff>=<sandhi_type>`
+ * `<sandhied_inflected_form>,<initial>$<diffs>/<initial_diff>=<sandhi_type>`
  * `<diffs>`: `<diff_to_1st_lemma>;<diff_to_2nd_lemma>;…`
  * `<diff_to_nth_lemma>`: `-<number_of_chars_to_delete>+<chars_to_add>`
  * `<initial_diff>`: `-<sandhied_initial>+<initial>`
@@ -36,7 +41,7 @@ Each line is formatted as follows:
 
 The space between the sandhied words is preserved except for the vowel sandhis where the final and initial vowels coalesce.
 
-###### Example 1: `prezyate,a~-1+;-6+I/-'+a=1`,
+###### Example 1: `prezyate,a$-1+;-6+I/-'+a=1`,
 
  - inflected form: `prezyate`
  - initial character of next word: `a`
@@ -45,7 +50,7 @@ The space between the sandhied words is preserved except for the vowel sandhis w
  - diff to undo sandhi of initial character of next word: `-'+a` (initial = `a`, sandhied initial = `'`)
  - sandhi type: `=1`, vowel sandhi 
 
-###### Example 2: `aprezyata,A:i:u:U:f:e:E:o:O~-1+;-6+I/=1`
+###### Example 2: `aprezyata,A:i:u:U:f:e:E:o:O$-1+;-6+I/=1`
 
  - inflected form: `aprezyata`
  - possible initial characters for this inflected form: `A`, `i`, `u`, `U`, `f`, `e`, `E`, `o` and `O`

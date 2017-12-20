@@ -89,3 +89,6 @@ catalog-v001.xml
 /sandhi_rules.pyc
 /__pycache__/
 .idea/
+
+# output of project (the file is too large to be in the repository)
+.output/total_output.txt
