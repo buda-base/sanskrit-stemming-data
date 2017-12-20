@@ -8,7 +8,7 @@ kavitA,kavitA
 Bunakti,Bunakti
 piSunEr,piSuna
 utkarRitE,utkarRitE
-ucCvasitezu,ut-Svas
+ucCvasitezu,ut_Svas
 Anana,Anana
 udvIkzita,ut_vi_Ikz
 vyAlulitena,vyAlulita
@@ -31,3 +31,5 @@ uttaptAS,ut_tap
 SaraRam,SaraRa
 upagatAH,upagata
 upagatAH,upa_gam
+pAhi,pA
+pAhi,pAhi
