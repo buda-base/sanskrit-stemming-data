@@ -15,7 +15,7 @@ Each line is formatted as follows: `inflected<space>operation`
 
 Note: see [this readme](./SH_parse/Readme.md)
 
-#### `output/total_output.txt`
+#### `output/trie_content.txt`
 A word-list containing all the sandhied inflected forms in Heritage's XML files and the files in `input/custom_entries/`.
 
 Since this file is 128mo at writing time, it won't be included in the repository, but will need to be generated with the following command:

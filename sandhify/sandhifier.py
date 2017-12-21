@@ -53,6 +53,7 @@ def adjust_new_initial_in_consonant1_sandhi(cmd):
             return '{}${}'.format(new_initial, remainder)
     return cmd
 
+
 def sandhify(inflected_form):
     sandhied = find_sandhis.all_possible_sandhis(inflected_form)
     singled = singled_entries(sandhied)
@@ -127,6 +128,6 @@ if __name__ == "__main__":
 
     total_sandhied = sandhied_n_lemmatized_total(inflected)
 
-    with open('../output/total_output.txt', 'w', -1, 'utf-8-sig') as g:
+    with open('../output/trie_content.txt', 'w', -1, 'utf-8-sig') as g:
         output = '\n'.join(total_sandhied)
         g.write(output)
