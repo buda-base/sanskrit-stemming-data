@@ -45,6 +45,7 @@ def singled_entries(entries):
         output.append(k+','+'|'.join(v))
     return output
 
+
 def adjust_new_initial_in_consonant1_sandhi(cmd):
     if '/=' not in cmd and '-+=' not in cmd and '- +=' not in cmd:
         initial, remainder = cmd.split('$')
@@ -83,14 +84,17 @@ def sandhied_n_lemmatized_total(raw_pairs):
     
     total_sandhied = []
     for infl, non_infl in raw_pairs:
+        if infl == 'tattva' or non_infl[:-1] == 'tattva':
+            print('ok')
         # adding the lemmas to the total output
-        all_non_infl = non_infl.split('/')
-        all_non_infl_entries = ['{},$/=0'.format(a) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
+        POS = non_infl[-1]
+        all_non_infl = [n[:-1] for n in non_infl.split('/')]
+        all_non_infl_entries = ['{},$/=0#{}'.format(a, POS) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
         total_sandhied.extend(all_non_infl_entries)
         
-        sandhied = ['{},$/=0'.format(infl)] # include the inflected form.
-        sandhied.extend(find_sandhis.all_possible_sandhis(infl))
-        stems = non_infl.split('/')
+        sandhied = ['{},$/=0#{}'.format(infl, POS)] # include the inflected form.
+        sandhied.extend([f+'#'+POS for f in find_sandhis.all_possible_sandhis(infl)])
+        stems = [n[:-1] for n in non_infl.split('/')]
         for entry in sandhied:
             parts = entry.split(',')
             partss = parts[1].split('$')
@@ -98,13 +102,15 @@ def sandhied_n_lemmatized_total(raw_pairs):
             sandhied_form = parts[0]
             initial = partss[0]
             new_initials = partsss[0].split('/')[1]
-            sandhi_type = partsss[1]
+            sandhi_type_n_POS = partsss[1]
             operations = []
             for stem in stems:
                 operation = find_uninflected_stem(stem, sandhied_form)
                 if operation != '':
                     operations.append(operation)
-            total_sandhied.append(sandhied_form + ',' + initial + '$' + ';'.join(operations)+'/'+new_initials+'='+sandhi_type)
+            to_add = '{},{}${}/{}={}'.format(sandhied_form, initial, ';'.join(operations), new_initials,
+                                                sandhi_type_n_POS)
+            total_sandhied.append(to_add)
     
     singled = singled_entries(total_sandhied) 
     return singled
@@ -113,18 +119,25 @@ def sandhied_n_lemmatized_total(raw_pairs):
 def import_inflected_pairs():
     folder = '../input/custom_entries'  # folder with files containing custom entries
     input_files = ['{}/{}'.format(folder, f) for f in os.listdir(folder)]
+    input_files.append('../input/preverbs.txt')
     input_files.append('../output/heritage_raw_pairs.txt')  # Sanskrit Heritage data
 
     total = []
     for in_file in input_files:
         with open(in_file) as f:
-            total.extend([a.strip().split(',') for a in f.readlines()])
+            for a in f.readlines():
+                if '/' in a:
+                    form, lemmas = a.strip().split(',')
+                    for l in lemmas.split('/'):
+                        total.append([form, l])
+                else:
+                    total.append(a.strip().split(','))
     return total
 
 
-if __name__ == "__main__":    
+if __name__ == "__main__":
     # opening the inflected forms
-    inflected = inflected = import_inflected_pairs()
+    inflected = import_inflected_pairs()
 
     total_sandhied = sandhied_n_lemmatized_total(inflected)
 

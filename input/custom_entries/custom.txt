@@ -1,2 +1,2 @@
-saMgrahasya,saNgraha
-saMgraha,saNgraha
+saMgrahasya,saNgraha1
+saMgraha,saNgraha1
