@@ -1,2 +1,2 @@
 wordo,'$-1+aH/- '+a=5
-aword,$/=0
+aword,$/=0#1

@@ -1,2 +1,2 @@
 wordU,r$-1+UH/- +=5
-rword,$/=0
+rword,$/=0#1

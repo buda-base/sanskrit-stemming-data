@@ -1,3 +1,4 @@
-devI,a:A:i:u:U:f:e:E:o:O$-1+I/- +=1
+devI,a:A:i:I:u:U:f:e:E:o:O$-1+I/- +=1
+devy,a:A:u:U:f:e:E:o:O$-1+I/- +=1
 devya,$-2+I/-+a=1
-asti,$/=0
+asti,$/=0#1

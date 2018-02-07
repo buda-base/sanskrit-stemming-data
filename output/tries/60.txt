@@ -1,2 +1,2 @@
-devA,a:A:i:u:U:f:e:E:o:O:y:r:l:v:h$-1+AH/- +=5
-eva,$/=0
+devA,a:A:i:I:u:U:f:e:E:o:O:y:r:l:v:h$-1+AH/- +=5
+eva,$/=0#1

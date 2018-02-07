@@ -156,9 +156,9 @@ tries = []
 for num, test in enumerate(tests):
     cmds = generator.find_sandhis_for(test[0], test[1])
     if cmds == None:
-        cmds = '{},$/=0'.format(test[0])
+        cmds = '{},$/=0#1'.format(test[0])
     if test[1] != '':
-        cmds += '\n{},$/=0'.format(test[1])
+        cmds += '\n{},$/=0#1'.format(test[1])
     tries.append((num+1, cmds))
 
 for trie in tries:
