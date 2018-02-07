@@ -1,4 +1,4 @@
-bahu,a:A:i:I:u:U:f:e:E:o:O$-1+u/- +=1
-bahv,a:A:i:I:f:E:o:O$-1+u/- +=1
-bahvi,$-2+u/-+i=1
+bahu,a:A:i:I:u:U:f:e:E:o:O$-1+u/- +=1#1
+bahv,a:A:i:I:f:E:o:O$-1+u/- +=1#1
+bahvi,$-2+u/-+i=1#1
 iti,$/=0#1

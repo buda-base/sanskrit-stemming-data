@@ -1,4 +1,4 @@
-kuru,a:A:i:I:u:U:f:e:E:o:O$-1+u/- +=1
-kurv,a:A:i:I:f:E:o:O$-1+u/- +=1
-kurva,$-2+u/-+a=1
+kuru,a:A:i:I:u:U:f:e:E:o:O$-1+u/- +=1#1
+kurv,a:A:i:I:f:E:o:O$-1+u/- +=1#1
+kurva,$-2+u/-+a=1#1
 adya,$/=0#1

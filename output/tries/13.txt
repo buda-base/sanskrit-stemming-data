@@ -1,4 +1,4 @@
-iti,a:A:i:I:u:U:f:e:E:o:O$-1+i/- +=1
-ity,a:A:u:U:f:e:E:o:O$-1+i/- +=1
-ityu,$-2+i/-+u=1
+iti,a:A:i:I:u:U:f:e:E:o:O$-1+i/- +=1#1
+ity,a:A:u:U:f:e:E:o:O$-1+i/- +=1#1
+ityu,$-2+i/-+u=1#1
 uvAca,$/=0#1

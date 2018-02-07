@@ -1,4 +1,4 @@
-devI,a:A:i:I:u:U:f:e:E:o:O$-1+I/- +=1
-devy,a:A:u:U:f:e:E:o:O$-1+I/- +=1
-devyA,$-2+I/-+A=1
+devI,a:A:i:I:u:U:f:e:E:o:O$-1+I/- +=1#1
+devy,a:A:u:U:f:e:E:o:O$-1+I/- +=1#1
+devyA,$-2+I/-+A=1#1
 AgacCati,$/=0#1

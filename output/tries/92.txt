@@ -1,2 +1,2 @@
-wordI,r$-1+iH/- +=5
+wordI,r$-1+iH/- +=5#1
 rword,$/=0#1

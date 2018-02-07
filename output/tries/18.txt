@@ -1,4 +1,4 @@
-maDu,a:A:i:I:u:U:f:e:E:o:O$-1+u/- +=1
-maDv,a:A:i:I:f:E:o:O$-1+u/- +=1
-maDva,$-2+u/-+a=1
+maDu,a:A:i:I:u:U:f:e:E:o:O$-1+u/- +=1#1
+maDv,a:A:i:I:f:E:o:O$-1+u/- +=1#1
+maDva,$-2+u/-+a=1#1
 admi,$/=0#1

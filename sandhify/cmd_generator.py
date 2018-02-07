@@ -21,6 +21,7 @@ class CmdGenerator:
             initial_char = word2
 
         all_potential_sandhis = self.find.all_possible_sandhis(word1)
+        all_potential_sandhis = [p+'#1' for p in all_potential_sandhis]
         
         formatted_possible_lemmas = []
         for potential_sandhi in all_potential_sandhis:

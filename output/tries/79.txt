@@ -1,4 +1,4 @@
-wordI,a:A:i:I:u:U:f:e:E:o:O$-1+I/- +=1
-wordy,a:A:u:U:f:e:E:o:O$-1+I/- +=1
-wordya,$-2+I/-+a=1
+wordI,a:A:i:I:u:U:f:e:E:o:O$-1+I/- +=1#1
+wordy,a:A:u:U:f:e:E:o:O$-1+I/- +=1#1
+wordya,$-2+I/-+a=1#1
 aword,$/=0#1
