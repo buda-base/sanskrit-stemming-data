@@ -83,12 +83,9 @@ def sandhied_n_lemmatized_total(raw_pairs):
     lemmas = {}
     
     total_sandhied = []
-    for infl, non_infl in raw_pairs:
-        if infl == 'tattva' or non_infl[:-1] == 'tattva':
-            print('ok')
+    for infl, non_infl, POS in raw_pairs:
         # adding the lemmas to the total output
-        POS = non_infl[-1]
-        all_non_infl = [n[:-1] for n in non_infl.split('/')]
+        all_non_infl = non_infl.split('/')
         all_non_infl_entries = ['{},$/=0#{}'.format(a, POS) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
         total_sandhied.extend(all_non_infl_entries)
         
@@ -117,8 +114,15 @@ def sandhied_n_lemmatized_total(raw_pairs):
 
 
 def import_inflected_pairs():
-    folder = '../input/custom_entries'  # folder with files containing custom entries
-    input_files = ['{}/{}'.format(folder, f) for f in os.listdir(folder)]
+    """
+
+    :return: a list of tuples (inflected form, lemma, POS)
+            POS values are from 1 to 4 for normal part of speech tags,
+            -1 in case of multi-token lemmas.
+    """
+    folders = ['../input/custom_entries', '../input/maxmatch_workaround']
+
+    input_files = ['{}/{}'.format(folder, f) for folder in folders for f in os.listdir(folder)]
     input_files.append('../input/preverbs.txt')
     input_files.append('../output/heritage_raw_pairs.txt')  # Sanskrit Heritage data
 
@@ -129,9 +133,18 @@ def import_inflected_pairs():
                 if '/' in a:
                     form, lemmas = a.strip().split(',')
                     for l in lemmas.split('/'):
-                        total.append([form, l])
+                        if '—' not in l:
+                            lemma, POS = l[:-1], l[-1]
+                            total.append((form, lemma, POS))
+                        else:
+                            total.append((form, l, '-1'))  # default value for no-POS
                 else:
-                    total.append(a.strip().split(','))
+                    form, l = a.strip().split(',')
+                    if '—' not in l:
+                        lemma, POS = l[:-1], l[-1]
+                        total.append((form, lemma, POS))
+                    else:
+                        total.append((form, l, '-1'))
     return total
 
 
