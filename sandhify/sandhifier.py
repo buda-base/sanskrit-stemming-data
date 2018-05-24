@@ -84,10 +84,8 @@ def sandhied_n_lemmatized_total(raw_pairs):
     
     total_sandhied = []
     for infl, non_infl, POS in raw_pairs:
-        if 'saMgraha' == infl:
-            print('ok')
         # adding the lemmas to the total output
-        all_non_infl = non_infl.split('/')
+        all_non_infl = [a for a in non_infl.split('/') if '—' not in a]
         all_non_infl_entries = ['{},$/=0#{}'.format(a, POS) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
         total_sandhied.extend(all_non_infl_entries)
         

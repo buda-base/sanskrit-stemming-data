@@ -21,4 +21,4 @@ prati,prati4
 bahis,bahis4
 vi,vi4
 sam,sam4
-vyA,vi4_2—A4
+vyA,vi4_1>2—A4_3>3

@@ -1,8 +1,8 @@
-vitata,vi4_1-2—tan3_3-6
-anuzaNga,anu4_1-3—saj1_4-8
-prajYAnuzaNga,prajYa1_1-6—anu4_6-8—saj1_9-13
-guRAjYAhatAn,guRa1_1-4—AjYA1_4-7—A4_7-7—han3_8-12
-atikramati,ati4_1-3—kram3_4-10
-aDikaroti,aDi4_1-3—kf3_4-9
-aprApti,a4_1-1—prApti1_2-7
-alakzaRa,a4_1-1—lakzaRa1_2-8
+vitata,vi4_1>2—tan3_3>6
+anuzaNga,anu4_1>3—saj1_4>8
+prajYAnuzaNga,prajYa1_1>6—anu4_6>8—saj1_9>13
+guRAjYAhatAn,guRa1_1>4—AjYA1_4>7—A4_7>7—han3_8>12
+atikramati,ati4_1>3—kram3_4>10
+aDikaroti,aDi4_1>3—kf3_4>9
+aprApti,a4_1>1—prApti1_2>7
+alakzaRa,a4_1>1—lakzaRa1_2>8
