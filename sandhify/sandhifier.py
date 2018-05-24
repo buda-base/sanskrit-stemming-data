@@ -84,6 +84,8 @@ def sandhied_n_lemmatized_total(raw_pairs):
     
     total_sandhied = []
     for infl, non_infl, POS in raw_pairs:
+        if 'saMgraha' == infl:
+            print('ok')
         # adding the lemmas to the total output
         all_non_infl = non_infl.split('/')
         all_non_infl_entries = ['{},$/=0#{}'.format(a, POS) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
@@ -91,7 +93,7 @@ def sandhied_n_lemmatized_total(raw_pairs):
         
         sandhied = ['{},$/=0#{}'.format(infl, POS)] # include the inflected form.
         sandhied.extend([f+'#'+POS for f in find_sandhis.all_possible_sandhis(infl)])
-        stems = [n[:-1] for n in non_infl.split('/')]
+        stems = non_infl.split('/')
         for entry in sandhied:
             parts = entry.split(',')
             partss = parts[1].split('$')
