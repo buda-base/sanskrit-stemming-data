@@ -5,7 +5,7 @@ sys.path.append(os.path.abspath(os.path.join('..', 'resources')))
 from find_applicable_sandhis import FindApplicableSandhis
 from collections import OrderedDict
 
-find_sandhis = FindApplicableSandhis('sanskrit')
+find_sandhis = FindApplicableSandhis('sanskrit', True)
 
 
 def find_uninflected_stem(stem, form):
