@@ -80,18 +80,31 @@ def sandhied_n_lemmatized_total(raw_pairs):
             lemmas[lemma] = True
             return True
         return False
+
     lemmas = {}
     
     total_sandhied = []
-    for infl, non_infl, POS in raw_pairs:
+    for infl, lemma in raw_pairs:
+        if infl == 'boDi':
+            print('ok')
+        all_non_infl = []
+        if '—' in lemma:
+            all_non_infl.append((lemma, '-1'))
+        if '/' in lemma:
+            for l in lemma.split('/'):
+                lem, POS = l[:-1], l[-1]
+                all_non_infl.append((lem, POS))
+        else:
+            lem, POS = lemma[:-1], lemma[-1]
+            all_non_infl.append((lem, POS))
+
         # adding the lemmas to the total output
-        all_non_infl = [a for a in non_infl.split('/') if '—' not in a]
-        all_non_infl_entries = ['{},$/=0#{}'.format(a, POS) for a in all_non_infl if is_unknown_lemma(a, lemmas)]
-        total_sandhied.extend(all_non_infl_entries)
-        
-        sandhied = ['{},$/=0#{}'.format(infl, POS)] # include the inflected form.
-        sandhied.extend([f+'#'+POS for f in find_sandhis.all_possible_sandhis(infl)])
-        stems = non_infl.split('/')
+        for l, pos in all_non_infl:
+            if '—' not in l and is_unknown_lemma(l, lemmas):
+                total_sandhied.append('{},$-0+/=0£9#{}'.format(l, pos))
+
+        sandhied = ['{},$-0+/=0£9'.format(infl)] # include the inflected form.
+        sandhied.extend([f for f in find_sandhis.all_possible_sandhis(infl)])
         for entry in sandhied:
             parts = entry.split(',')
             partss = parts[1].split('$')
@@ -99,14 +112,16 @@ def sandhied_n_lemmatized_total(raw_pairs):
             sandhied_form = parts[0]
             initial = partss[0]
             new_initials = partsss[0].split('/')[1]
-            sandhi_type_n_POS = partsss[1]
+            sandhi_type = partsss[1]
             operations = []
-            for stem in stems:
+            for stem, POS in all_non_infl:
                 operation = find_uninflected_stem(stem, sandhied_form)
                 if operation != '':
                     operations.append(operation)
-            to_add = '{},{}${}/{}={}'.format(sandhied_form, initial, ';'.join(operations), new_initials,
-                                                sandhi_type_n_POS)
+                else:
+                    operations.append('-0+')
+            to_add = '{},{}${}/{}={}#{}'.format(sandhied_form, initial, ';'.join(operations), new_initials,
+                                                sandhi_type, POS)
             total_sandhied.append(to_add)
     
     singled = singled_entries(total_sandhied) 
@@ -132,19 +147,10 @@ def import_inflected_pairs():
             for a in f.readlines():
                 if '/' in a:
                     form, lemmas = a.strip().split(',')
-                    for l in lemmas.split('/'):
-                        if '—' not in l:
-                            lemma, POS = l[:-1], l[-1]
-                            total.append((form, lemma, POS))
-                        else:
-                            total.append((form, l, '-1'))  # default value for no-POS
+                    total.append((form, lemmas))
                 else:
                     form, l = a.strip().split(',')
-                    if '—' not in l:
-                        lemma, POS = l[:-1], l[-1]
-                        total.append((form, lemma, POS))
-                    else:
-                        total.append((form, l, '-1'))
+                    total.append((form, l))
     return total
 
 
