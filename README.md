@@ -86,11 +86,11 @@ So, the Maximal Matching algorithm will take the longest existing word and segme
 We propose to add to the lexical resources a new entry for `atikramati` as a whole, with the following format:
 
  * `<inflected_form>,<multi-token_lemma>`
- * `<multi-token_lemma>`: `<token1>—<token2>—<tokenN>`
+ * `<multi-token_lemma>`: `<token1>⟾<token2>⟾<tokenN>`
  * `<token>`: `<token_string><POS_number>_<indices>`
  * `<indices>`: `<start>><end>` (from the first character)
 
-Thus, `atikramati,ati4_1>3—kram3_4>10_-1` is analyzed as follows:
+Thus, `atikramati,ati4_1>3⟾kram3_4>10_-1` is analyzed as follows:
 
  * `atikramati`: inflected form
  * `ati4_1>3`: lemma: `ati`, POS: `Preverb`, starting char: `1`, ending char: `3`
