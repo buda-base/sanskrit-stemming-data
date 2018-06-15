@@ -90,7 +90,7 @@ def sandhied_n_lemmatized_total(raw_pairs):
         if infl == 'Darma':
             print('ok')
         all_non_infl = []
-        if '—' in lemma:
+        if '⟾' in lemma:
             lem, POS = lemma, '-1'
             all_non_infl.append((lem, POS))
         elif '/' in lemma:
@@ -113,7 +113,7 @@ def sandhied_n_lemmatized_total(raw_pairs):
                         total_sandhied.append('{},${}/=0£9#{}'.format(infl, find_uninflected_stem(l, infl), POS))
 
         sandhied = []
-        if '—' in lemma:
+        if '⟾' in lemma:
             l, pos = all_non_infl[0]
             # sandhied = ['{},${}/=0£9'.format(infl, find_uninflected_stem(l, infl))]
             total_sandhied.append('{},${}/=0£9#{}'.format(infl, find_uninflected_stem(l, infl), POS))
@@ -121,7 +121,7 @@ def sandhied_n_lemmatized_total(raw_pairs):
             # sandhied = ['{},$-0+/=0£9'.format(infl)] # include the inflected form.
             for l, pos in all_non_infl:
                 total_sandhied.append('{},${}/=0£9#{}'.format(infl, find_uninflected_stem(l, infl), POS))
-        sandhied.extend([f for f in find_sandhis.all_possible_sandhis(infl) if '—' not in f])
+        sandhied.extend([f for f in find_sandhis.all_possible_sandhis(infl) if '⟾' not in f])
         for entry in sandhied:
             parts = entry.split(',')
             partss = parts[1].split('$')

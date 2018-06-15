@@ -12,7 +12,7 @@ class CmdGenerator:
 
     """
     def __init__(self, language):
-        self.find = FindApplicableSandhis(language)
+        self.find = FindApplicableSandhis(language, True)
 
     def find_sandhis_for(self, word1, word2):
         if len(word2) > 0:
@@ -84,8 +84,8 @@ if __name__ == "__main__":
     lang = 'sanskrit'
     engine = CmdGenerator(lang)
     
-    word1 = 'rAmaH'
-    word2 = 'wikAm'
+    word1 = 'na'
+    word2 = 'eti'
     cmd = engine.find_sandhis_for(word1, word2)
     if cmd:
         print(cmd)

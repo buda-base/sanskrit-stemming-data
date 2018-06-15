@@ -1,2 +1,2 @@
-wordir,g:G:j:J:q:Q:d:D:b:B:n:m$-2+iH/- +=6#1
+wordir,g:G:j:J:q:Q:d:D:b:B:n:m$-2+iH/- +=6£7#1
 gword,$/=0#1

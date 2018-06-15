@@ -1,4 +1,4 @@
-wordU,a:A:i:I:u:U:f:e:E:o:O$-1+U/- +=1#1
-wordv,a:A:i:I:f:e:E:o:O$-1+U/- +=1#1
-wordva,$-2+U/-+a=1#1
+wordU,a:A:i:I:u:U:f:e:E:o:O$-1+U/- +=1£1#1
+wordv,a:A:i:I:f:e:E:o:O$-1+U/- +=1£1#1
+wordva,$-2+U/-+a=1£1#1
 aword,$/=0#1

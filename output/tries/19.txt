@@ -1,4 +1,4 @@
-guru,a:A:i:I:u:U:f:e:E:o:O$-1+u/- +=1#1
-gurv,a:A:i:I:f:E:o:O$-1+u/- +=1#1
-gurvA,$-2+u/-+A=1#1
+guru,a:A:i:I:u:U:f:e:E:o:O$-1+u/- +=1£1#1
+gurv,a:A:i:I:f:E:o:O$-1+u/- +=1£1#1
+gurvA,$-2+u/-+A=1£1#1
 Asanam,$/=0#1
