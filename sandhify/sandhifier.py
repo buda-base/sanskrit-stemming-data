@@ -87,8 +87,6 @@ def sandhied_n_lemmatized_total(raw_pairs):
 
     total_sandhied = []
     for infl, lemma in raw_pairs:
-        if infl == 'Darma':
-            print('ok')
         all_non_infl = []
         if '⟾' in lemma:
             lem, POS = lemma, '-1'
@@ -152,13 +150,11 @@ def import_inflected_pairs():
             POS values are from 1 to 4 for normal part of speech tags,
             -1 in case of multi-token lemmas.
     """
-    folders = []
+    folders = ['../input/custom_entries', '../input/maxmatch_workaround']
 
     input_files = ['{}/{}'.format(folder, f) for folder in folders for f in os.listdir(folder)]
     input_files.append('../input/preverbs.txt')
     input_files.append('../output/heritage_raw_pairs.txt')  # Sanskrit Heritage data
-    input_files.append('../input/custom_entries')
-    input_files.append('../input/maxmatch_workaround')
 
     total = []
     for in_file in input_files:
@@ -179,6 +175,6 @@ if __name__ == "__main__":
 
     total_sandhied = sandhied_n_lemmatized_total(inflected)
 
-    with open('../output/trie_content.txt', 'w', -1, 'utf-8-sig') as g:
+    with open('../output/trie_content.txt', 'w') as g:
         output = '\n'.join(total_sandhied)
         g.write(output)
