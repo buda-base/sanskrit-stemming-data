@@ -152,11 +152,13 @@ def import_inflected_pairs():
             POS values are from 1 to 4 for normal part of speech tags,
             -1 in case of multi-token lemmas.
     """
-    folders = ['../input/custom_entries', '../input/maxmatch_workaround']
+    folders = []
 
     input_files = ['{}/{}'.format(folder, f) for folder in folders for f in os.listdir(folder)]
     input_files.append('../input/preverbs.txt')
     input_files.append('../output/heritage_raw_pairs.txt')  # Sanskrit Heritage data
+    input_files.append('../input/custom_entries')
+    input_files.append('../input/maxmatch_workaround')
 
     total = []
     for in_file in input_files:
