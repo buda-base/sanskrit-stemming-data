@@ -1,2 +1,3 @@
 caryAvatara,caryA1_1>5⟾avatara1_5>11
 nAmasam,nAman1_1>4⟾sam4_5>7
+jYAnasattvasya,jYAna1_1>5⟾sattva1_6>14
