@@ -1,4 +1,4 @@
-# Data for the Sanskrit Lucene analyzers
+# Data for the Sanskrit Lucene analyzers 
 
 ## Generated resources
 
